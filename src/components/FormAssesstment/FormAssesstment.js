@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {Form} from "react-bootstrap";
 import { withStyles,Slider} from '@material-ui/core';
 import './FormAssesstment.css'
-import data from '../../assets/data'
 
 const PrettoSlider = withStyles({
     root: {
@@ -35,25 +34,19 @@ const PrettoSlider = withStyles({
 })(Slider);
 
 const FormAssesstment = (props) => {
-    const [dataSlider, setDataSlider] = useState(data)
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
     }
 
-    const handleChange = (e,data) => {
-        console.log(data.name)
-    }
 
-    const handleChangeSlider = (index) => {
 
-    }
 
     const sliders = () => {
         return (
             <div>
-                {dataSlider.map((item, index) => {
+                {props.categories.map((item, index) => {
                     return(
                         <Form.Group key={index}>
                             <Form.Label>{item.name}</Form.Label>
@@ -64,7 +57,7 @@ const FormAssesstment = (props) => {
                                 step={1}
                                 min={1}
                                 max={5}
-                                onChange={handleChange}
+                                onChange={(e, data) => {props.onChangeFormValue(data,index)}}
                             />
                         </Form.Group>
                     )
@@ -77,13 +70,13 @@ const FormAssesstment = (props) => {
     }
 
     return(
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={props.onSubmit}>
             <Form.Group className="mb-3">
                 <Form.Label>Nombre Completo</Form.Label>
                 <Form.Control
                     type={'text'}
                     placeholder={'Ingresa tu nombre completo'}
-                    onChange={handleChange}
+                    onChange={props.onChange}
                     name={'name'}
                 />
             </Form.Group>
@@ -92,7 +85,7 @@ const FormAssesstment = (props) => {
                 <Form.Control
                     type={'email'}
                     placeholder={'Ingresa tu email'}
-                    onChange={handleChange}
+                    onChange={props.onChange}
                     name={'email'}
                 />
             </Form.Group>

@@ -1,7 +1,13 @@
 import React from "react";
+import Results from "../../components/Results/Results";
+import {Container} from "@material-ui/core";
 
 const AssesstmentResult = (props) => {
-    return <h1> assestment result </h1>
+    return (
+        <Container>
+            <Results />
+        </Container>
+    )
 }
 
 export default AssesstmentResult

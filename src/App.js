@@ -11,7 +11,7 @@ import AssesstmentResult from "./pages/AssestmentResult/AssesstmentResult";
 
 function App() {
   return (
-      <BrowserRouter>
+      <BrowserRouter className={'SPA'}>
         <NavBar />
         <Switch>
           <Route exact path={'/home'} component={Home} />

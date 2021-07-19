@@ -5,8 +5,9 @@ const RadialGradientGraphic = (props) => {
     return (
         <ReactApexChart
             type={'radialBar'}
-            height={350}
-            series={75}
+            height={200}
+            width={200}
+            series={[props.value / 5 * 100]}
             options={{
                 chart: {
                     height: 350,
@@ -57,9 +58,9 @@ const RadialGradientGraphic = (props) => {
                                 fontSize: '17px'
                             },
                             value: {
-                                formatter: function(val) {
-                                    return parseInt(val);
-                                },
+                                // formatter: function(val) {
+                                //     return parseInt(val);
+                                // },
                                 color: '#111',
                                 fontSize: '36px',
                                 show: true,
@@ -83,7 +84,7 @@ const RadialGradientGraphic = (props) => {
                 stroke: {
                     lineCap: 'round'
                 },
-                labels: ['Percent'],
+                labels: [props.name],
             }}
         />
     )
