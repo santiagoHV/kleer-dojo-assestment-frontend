@@ -1,0 +1,32 @@
+.footer{
+    font-size: 60%;
+    background: black;
+    padding: 10px 0 20px 0 ;
+    position: static;
+    bottom: 0;
+    width: 100vw;
+    margin-right: 0;
+}
+
+.footer li{
+    float: left;
+}
+
+.footer ul{
+    display: block;
+    list-style-type: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.footer a{
+    color: white;
+}
+
+.footer a:hover{
+    color: white;
+    text-decoration: none;
+}
