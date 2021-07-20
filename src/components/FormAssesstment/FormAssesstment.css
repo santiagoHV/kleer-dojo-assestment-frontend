@@ -1,0 +1,15 @@
+.form{
+    font-family: Mali-SemiBold;
+}
+
+.space-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form--btn{
+    margin-top: 20px;
+    alignment: center;
+    width: 300px;
+}

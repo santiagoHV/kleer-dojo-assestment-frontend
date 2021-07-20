@@ -1,47 +1,11 @@
 import React, {useState} from "react";
 import {Form} from "react-bootstrap";
-import { withStyles,Slider} from '@material-ui/core';
+import PrettoSlider from "../SliderCustom/SliderCustom";
 import './FormAssesstment.css'
 
-const PrettoSlider = withStyles({
-    root: {
-        color: '#52af77',
-        height: 8,
-    },
-    thumb: {
-        height: 24,
-        width: 24,
-        backgroundColor: '#fff',
-        border: '2px solid currentColor',
-        marginTop: -8,
-        marginLeft: -12,
-        '&:focus, &:hover, &$active': {
-            boxShadow: 'inherit',
-        },
-    },
-    active: {},
-    valueLabel: {
-        left: 'calc(-50% + 4px)',
-    },
-    track: {
-        height: 8,
-        borderRadius: 4,
-    },
-    rail: {
-        height: 8,
-        borderRadius: 4,
-    },
-})(Slider);
+
 
 const FormAssesstment = (props) => {
-
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-    }
-
-
-
 
     const sliders = () => {
         return (
@@ -70,7 +34,7 @@ const FormAssesstment = (props) => {
     }
 
     return(
-        <Form onSubmit={props.onSubmit}>
+        <Form onSubmit={props.onSubmit} className={'form'}>
             <Form.Group className="mb-3">
                 <Form.Label>Nombre Completo</Form.Label>
                 <Form.Control
@@ -90,7 +54,10 @@ const FormAssesstment = (props) => {
                 />
             </Form.Group>
             {sliders()}
-            <button className={'btn btn-primary'}>Enviar</button>
+            <div className={'space-btn'}>
+                <button className={'btn my-btn-primary form--btn'}>Enviar</button>
+            </div>
+
         </Form>
     )
 }

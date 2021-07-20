@@ -1,3 +1,10 @@
 .navbar{
     background-color: #D83D45 !important;
+    font-family: Mali-SemiBold !important;
+}
+
+.navbar__container{
+    margin-left: 5% ;
+    margin-right: 5% ;
+    min-width: 90%;
 }

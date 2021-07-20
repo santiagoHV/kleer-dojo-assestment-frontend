@@ -1,7 +1,26 @@
 .results{
+    width: 90%;
+    font-family: Mali-SemiBold !important;
+    alignment: center;
+    justify-content: center;
+    padding: 5%;
+}
+.results h1{
+    width: 100%;
+}
+
+.restults__graphics{
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 20%;
+}
+
+.secondary-graphics{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.results--btn{
 
 }

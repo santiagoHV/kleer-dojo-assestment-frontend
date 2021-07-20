@@ -6,12 +6,17 @@ import './TakeAssesstment.css'
 import Results from "../../components/Results/Results";
 
 const TakeAssesstment = (props) => {
+    const [basicData, setBasicData] = useState({
+        name: '',
+        email: ''
+    })
+
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [categories, setCategories] = useState(data)
 
     //temporal
-    const [isDone,setIsDone] = useState(false)
+    const [isDone, setIsDone] = useState(false)
 
     const handleChangeFormValue = (value, index) => {
         const temporalCategories = categories
@@ -19,8 +24,13 @@ const TakeAssesstment = (props) => {
         setCategories(temporalCategories)
     }
 
-    const handleChange = (e,data) => {
-        console.log(data.name)
+    const handleChange = (e) => {
+        setBasicData({
+            ...basicData,
+            [e.target.name]: e.target.value
+        })
+
+        console.log(basicData)
     }
 
     const handleSubmit = (e) => {
@@ -30,7 +40,7 @@ const TakeAssesstment = (props) => {
 
     const goBack = () => {
         setIsDone(false)
-        data.forEach((item) =>{
+        data.forEach((item) => {
             item.value = 1
         })
         setCategories(data)
@@ -39,27 +49,26 @@ const TakeAssesstment = (props) => {
 
     return (
         <section>
-            <Container className={'form-container'}>
-                {isDone ?
-                    <div>
-                        <Results results={categories}/>
-                        <button
-                            onClick={goBack}
-                            className={'btn btn-primary'}
-                        >
-                            Volver a presentar
-                        </button>
-                    </div> :
+            {isDone ?
+                <div>
+                    <Results
+                        results={categories}
+                        name={basicData.name}
+                        email={basicData.email}
+                        goBack={goBack}
+                    />
+                </div> :
+                <Container className={'form-container'}>
                     <FormAssesstment
                         categories={categories}
-                        name={name}
-                        email={email}
+                        name={basicData.name}
+                        email={basicData.email}
                         onChangeFormValue={handleChangeFormValue}
                         onChange={handleChange}
                         onSubmit={handleSubmit}
                     />
-                }
-            </Container>
+                </Container>
+            }
         </section>
     )
 }

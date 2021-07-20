@@ -2,18 +2,22 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {Container} from "@material-ui/core";
 import './Home.css'
+import Hero from "../../components/Hero/Hero";
 
 const Home = (props) => {
     return(
-        <Container className={'home-container'}>
+        <section className={'home'}>
+            <Hero />
+            <div className={'home__content'}>
+                <Link
+                    to={'/take-assesstment'}
+                    className={'btn my-btn-primary home__content--button'}
+                >
+                    Tomar assesstment
+                </Link>
+            </div>
 
-            <Link
-                to={'/take-assesstment'}
-                className={'btn btn-primary'}
-            >
-                Tomar assesstment
-            </Link>
-        </Container>
+        </section>
     )
 }
 

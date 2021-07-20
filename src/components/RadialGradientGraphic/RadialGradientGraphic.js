@@ -36,18 +36,6 @@ const RadialGradientGraphic = (props) => {
                                 opacity: 0.24
                             }
                         },
-                        track: {
-                            background: '#fff',
-                            strokeWidth: '67%',
-                            margin: 0, // margin is in pixels
-                            dropShadow: {
-                                enabled: true,
-                                top: -3,
-                                left: 0,
-                                blur: 4,
-                                opacity: 0.35
-                            }
-                        },
 
                         dataLabels: {
                             show: true,
@@ -58,12 +46,12 @@ const RadialGradientGraphic = (props) => {
                                 fontSize: '17px'
                             },
                             value: {
-                                // formatter: function(val) {
-                                //     return parseInt(val);
-                                // },
                                 color: '#111',
-                                fontSize: '36px',
+                                fontSize: '25px',
                                 show: true,
+                                formatter: function(val) {
+                                    return val + 'px';
+                                },
                             }
                         }
                     }
@@ -74,7 +62,7 @@ const RadialGradientGraphic = (props) => {
                         shade: 'dark',
                         type: 'horizontal',
                         shadeIntensity: 0.5,
-                        gradientToColors: ['#ABE5A1'],
+                        gradientToColors: ['#D83D45'],
                         inverseColors: true,
                         opacityFrom: 1,
                         opacityTo: 1,
