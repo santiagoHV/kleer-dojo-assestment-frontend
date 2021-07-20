@@ -50,7 +50,7 @@ const RadialGradientGraphic = (props) => {
                                 fontSize: '25px',
                                 show: true,
                                 formatter: function(val) {
-                                    return val + 'px';
+                                    return val / 20;
                                 },
                             }
                         }
