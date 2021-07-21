@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Container} from "react-bootstrap";
+
 import FormAssesstment from "../../components/FormAssesstment/FormAssesstment";
 import data from '../../assets/data'
 import './TakeAssesstment.css'
@@ -47,16 +48,26 @@ const TakeAssesstment = (props) => {
 
     }
 
+
+    const results = (
+        <Results
+            results={categories}
+            name={basicData.name}
+            email={basicData.email}
+            goBack={goBack}
+        />
+    )
+
+
     return (
         <section>
             {isDone ?
-                <div>
-                    <Results
-                        results={categories}
-                        name={basicData.name}
-                        email={basicData.email}
-                        goBack={goBack}
-                    />
+                <div >
+                    <div>
+                        {results}
+                    </div>
+
+
                 </div> :
                 <Container className={'form-container'}>
                     <FormAssesstment
