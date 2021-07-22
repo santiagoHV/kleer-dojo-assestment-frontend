@@ -1,9 +1,11 @@
 import React from "react";
 import ReactApexChart from 'react-apexcharts'
+import './RadialGradientGraphic.css'
 
 const RadialGradientGraphic = (props) => {
     return (
         <ReactApexChart
+            className={'gradient-graphic'}
             type={'radialBar'}
             height={200}
             width={200}

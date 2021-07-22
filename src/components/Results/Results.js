@@ -4,8 +4,11 @@ import RadialGradientGraphic from "../RadialGradientGraphic/RadialGradientGraphi
 import './Results.css'
 import {Container} from "react-bootstrap";
 import ReactToPdf from "react-to-pdf";
+import PrintableResults from "../PrintableResults/PrintableResults";
 
 const Results = (props) => {
+    const [printVisible, setPrintVisible] = useState(false)
+
     const results = props.results.map((item) => item.value)
     const categories = props.results.map((item) => item.name)
 
@@ -13,12 +16,12 @@ const Results = (props) => {
 
     return(
         <Container className={'results'}>
-            <div ref={ref}>
+            <div className={'results__container'} >
                 <h1>
                     Agile Coach Competency Framework Assessment
                 </h1>
                 <h4>{props.name.toUpperCase()}</h4>
-                <div className={'restults__graphics'}>
+                <div className={'results__graphics'}>
                     <RadarGraphic series={results} categories={categories} className={'principal-graphic'}/>
                     <div className={'secondary-graphics'}>
                         <RadialGradientGraphic name={'Contenido'} value={4.5} />
@@ -26,17 +29,35 @@ const Results = (props) => {
                     </div>
                 </div>
             </div>
+
+            <div className={`static-printable ${printVisible ? '' : 'printable-results'}`} ref={ref} >
+                <div className={'static-printable'}>
+                    <PrintableResults
+                        name={props.name}
+                        results={results}
+                        categories={categories}
+                    />
+                </div>
+
+            </div>
+
             <ReactToPdf
                 targetRef={ref}
                 filename="assesstment-results.pdf"
                 options={{
                     orientation: 'landscape'
                 }}
+                x={25}
+                y={25}
             >
                 {({toPdf}) => (
                     <button
-                        onClick={toPdf}
-                        className={'btn my-btn-primary ml-4'}
+                        onClick={async () => {
+                            setPrintVisible(true)
+                            await toPdf()
+                            setPrintVisible(false)
+                        }}
+                        className={'btn my-btn-primary ml-4 results--btn'}
                     >Descargar resultados</button>
                 )}
             </ReactToPdf>
@@ -47,6 +68,8 @@ const Results = (props) => {
             >
                 Volver a presentar
             </button>
+
+
 
 
         </Container>

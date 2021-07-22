@@ -2,13 +2,22 @@ import React from "react";
 import ReactApexChart from 'react-apexcharts'
 import './RadarGraphic.css'
 
+const getWindowDimensions = () => {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+        width,
+        height
+    };
+}
+
+
 const RadarGraphic = (props) => {
     return(
        <ReactApexChart
             className={'graphic'}
             type={'radar'}
-            width={600}
-            height={500}
+            width={getWindowDimensions().width < 600 ? getWindowDimensions().width *0.95: 600}
+            height={getWindowDimensions().width < 500 ? getWindowDimensions().width : 500}
             series={[{
                 name: 'Score',
                 data: props.series
