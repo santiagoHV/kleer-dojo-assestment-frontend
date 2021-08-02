@@ -42,11 +42,14 @@
 }
 
 .static-printable{
-    width: 1000px;
+    width: 1500px;
 }
 
 .results--btn{
     margin: 10px;
+}
+
+.results-logo{
 }
 
 .progress-bar{

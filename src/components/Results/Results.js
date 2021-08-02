@@ -8,8 +8,11 @@ import PrintableResults from "../PrintableResults/PrintableResults";
 
 const Results = (props) => {
 
+    const [printVisible, setPrintVisible] = useState(false)
     let results = [], categories = []
     let name, date, email
+
+    const ref = React.createRef()
 
     for(let i in props.results){
         if(i === 'name'){
@@ -41,6 +44,7 @@ const Results = (props) => {
         }
     }
 
+
     const progressBars = () => {
         return(
             <div>
@@ -65,11 +69,7 @@ const Results = (props) => {
 
         )
     }
-    const [printVisible, setPrintVisible] = useState(true)
 
-
-
-    const ref = React.createRef()
 
     return(
         <div>
@@ -90,12 +90,35 @@ const Results = (props) => {
                     </div>
                 </div>
 
+                <ReactToPdf
+                    targetRef={ref}
+                    filename="assesstment-results.pdf"
+                    options={{
+                        orientation: 'landscape',
+                        // unit: 'in',
+                        // format: [4, 2]
+                    }}
+                    x={-35}
+                    y={-37}
+                >
+                    {({toPdf}) => (
+                        <button
+                            onClick={async () => {
+                                setPrintVisible(true)
+                                await toPdf()
+                                setPrintVisible(false)
+                            }}
+                            className={'btn my-btn-primary ml-4 results--btn'}
+                        >Descargar resultados</button>
+                    )}
+                </ReactToPdf>
+
             </Container>
 
             <div className={`static-printable ${printVisible ? 'printable-results-visible' : 'printable-results-invisible'}`} ref={ref} >
                 <div className={'static-printable'}>
                     <PrintableResults
-                        name={'name'}
+                        name={name}
                         results={results}
                         categories={categories}
                     >
@@ -105,35 +128,8 @@ const Results = (props) => {
 
             </div>
 
-            <ReactToPdf
-                targetRef={ref}
-                filename="assesstment-results.pdf"
-                options={{
-                    orientation: 'landscape',
-                    // unit: 'in',
-                    // format: [4, 2]
-                }}
-                x={-15}
-                y={-17}
-            >
-                {({toPdf}) => (
-                    <button
-                        onClick={async () => {
-                            setPrintVisible(true)
-                            await toPdf()
-                            setPrintVisible(false)
-                        }}
-                        className={'btn my-btn-primary ml-4 results--btn'}
-                    >Descargar resultados</button>
-                )}
-            </ReactToPdf>
 
-            <button
-                onClick={props.goBack}
-                className={'btn my-btn-primary results--btn'}
-            >
-                Volver a presentar
-            </button>
+
         </div>
 
     )

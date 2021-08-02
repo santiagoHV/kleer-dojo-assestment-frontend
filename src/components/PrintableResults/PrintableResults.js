@@ -1,7 +1,7 @@
 import React from "react";
 import './PrintableResults.css'
 import RadarGraphic from "../RadarGraphic/RadarGraphic";
-import RadialGradientGraphic from "../RadialGradientGraphic/RadialGradientGraphic";
+import Logo from '../../assets/img/LOGO magenta.png'
 
 const PrintableResults = (props) => {
 
@@ -18,6 +18,10 @@ const PrintableResults = (props) => {
                 <div className={'secondary-graphics'}>
                     {props.children}
                 </div>
+                <div className={'results-logo'}>
+                    <img src={Logo} height={200}/>
+                </div>
+
             </div>
         </div>
     )
