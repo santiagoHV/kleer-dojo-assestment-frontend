@@ -6,8 +6,8 @@ import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
 import NavBar from "./components/Navbar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/home/Home";
-import TakeAssesstment from "./pages/TakeAssestment/TakeAssesstment";
-import AssesstmentResult from "./pages/AssestmentResult/AssesstmentResult";
+import TakeAssessmentContainer from "./pages/TakeAssestment/TakeAssessmentContainer";
+import AssessmentResult from "./pages/AssessmentResult/AssessmentResult";
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path={'/home'} component={Home} />
-          <Route exact path={'/take-assesstment'} component={TakeAssesstment} />
-          <Route exact path={'/results-assesstment'} component={AssesstmentResult} />
+          <Route exact path={'/take-assessment'} component={TakeAssessmentContainer} />
+          <Route exact path={'/results-assessment/:email'} component={AssessmentResult} />
           <Redirect to={'/home'} />
         </Switch>
         <Footer />

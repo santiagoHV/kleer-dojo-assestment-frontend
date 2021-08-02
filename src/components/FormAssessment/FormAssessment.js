@@ -1,11 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 import {Form} from "react-bootstrap";
 import PrettoSlider from "../SliderCustom/SliderCustom";
-import './FormAssesstment.css'
+import './FormAssessment.css'
+import {Slider} from "@material-ui/core";
 
 
+const FormAssessment = (props) => {
 
-const FormAssesstment = (props) => {
 
     const sliders = () => {
         return (
@@ -20,7 +21,7 @@ const FormAssesstment = (props) => {
                                 marks
                                 step={1}
                                 min={1}
-                                max={5}
+                                max={6}
                                 onChange={(e, data) => {props.onChangeFormValue(data,index)}}
                             />
                         </Form.Group>
@@ -28,9 +29,6 @@ const FormAssesstment = (props) => {
                 })}
             </div>
         )
-
-
-
     }
 
     return(
@@ -62,4 +60,4 @@ const FormAssesstment = (props) => {
     )
 }
 
-export default FormAssesstment
+export default FormAssessment

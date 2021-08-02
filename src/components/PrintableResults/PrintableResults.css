@@ -1,6 +1,6 @@
 #printable-results{
-    height: 700px;
-    width: 1000px;
+    height: 1000px;
+    width: 1200px;
     font-family: Mali-SemiBold !important;
     alignment: center;
     justify-content: center;
@@ -11,17 +11,18 @@
     width: 100%;
 }
 
-.results__container{}
 
 .result__graphics{
     width: 100%;
     display: flex;
-    justify-content: center;
-
+    justify-content: space-around;
+    align-content: flex-end;
+    align-items: flex-end;
 }
 
 .secondary-graphics{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: end;
 }

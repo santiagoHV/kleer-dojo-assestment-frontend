@@ -5,6 +5,8 @@ import RadialGradientGraphic from "../RadialGradientGraphic/RadialGradientGraphi
 
 const PrintableResults = (props) => {
 
+    const contenido = props.results
+    console.log(contenido)
     return(
         <div id={'printable-results'}>
             <h1>
@@ -14,8 +16,7 @@ const PrintableResults = (props) => {
             <div className={'result__graphics'}>
                 <RadarGraphic series={props.results} categories={props.categories} className={'principal-graphic'}/>
                 <div className={'secondary-graphics'}>
-                    <RadialGradientGraphic name={'Contenido'} value={4.5} />
-                    <RadialGradientGraphic name={'Proceso'} value={3} />
+                    {props.children}
                 </div>
             </div>
         </div>

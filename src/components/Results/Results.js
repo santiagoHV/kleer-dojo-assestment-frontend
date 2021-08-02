@@ -2,41 +2,105 @@ import React, {useState} from "react";
 import RadarGraphic from "../RadarGraphic/RadarGraphic";
 import RadialGradientGraphic from "../RadialGradientGraphic/RadialGradientGraphic";
 import './Results.css'
-import {Container} from "react-bootstrap";
+import {Container, ProgressBar} from "react-bootstrap";
 import ReactToPdf from "react-to-pdf";
 import PrintableResults from "../PrintableResults/PrintableResults";
 
 const Results = (props) => {
-    const [printVisible, setPrintVisible] = useState(false)
 
-    const results = props.results.map((item) => item.value)
-    const categories = props.results.map((item) => item.name)
+    let results = [], categories = []
+    let name, date, email
+
+    for(let i in props.results){
+        if(i === 'name'){
+            name = props.results[i]
+        }else if(i === 'email'){
+            email = props.results[i]
+        }else if(i === 'date'){
+            date = props.results[i]
+        }else{
+            results.push(props.results[i])
+            categories.push(i)
+        }
+    }
+
+    const getLevel = (level) => {
+        switch (level){
+            case 1:
+                return 'Novato'
+            case 2:
+                return 'Principiante'
+            case 3:
+                return 'Competente'
+            case 4:
+                return 'Avanzado'
+            case 5:
+                return 'Profesional'
+            case 6:
+                return 'Experto'
+        }
+    }
+
+    const progressBars = () => {
+        return(
+            <div>
+                {results.map((item, index) => {
+                    return (
+                        <div className={'competence-container'}>
+                            <h4 className={'competence-container__title'}>
+                                {categories[index].replace(/^\w/, (c) => c.toUpperCase())}
+                            </h4>
+                            <p className={'competence-container__level'}>
+                                {getLevel(item)}
+                            </p>
+                            <ProgressBar
+                                now={item / 6 * 100}
+                                animated={true}
+                                className={'progress-bar'}
+                            />
+                        </div>
+                    )
+                })}
+            </div>
+
+        )
+    }
+    const [printVisible, setPrintVisible] = useState(true)
+
+
 
     const ref = React.createRef()
 
     return(
-        <Container className={'results'}>
-            <div className={'results__container'} >
-                <h1>
-                    Agile Coach Competency Framework Assessment
-                </h1>
-                <h4>{props.name.toUpperCase()}</h4>
-                <div className={'results__graphics'}>
-                    <RadarGraphic series={results} categories={categories} className={'principal-graphic'}/>
-                    <div className={'secondary-graphics'}>
-                        <RadialGradientGraphic name={'Contenido'} value={4.5} />
-                        <RadialGradientGraphic name={'Proceso'} value={3} />
+        <div>
+            <Container className={'results'}>
+                <div className={'results__container'} >
+                    <h1 className={'results__title'}>
+                        Agile Coach Competency Framework Assessment
+                    </h1>
+                    <h4 className={'results__name'}>
+                        {name.toUpperCase()}
+                    </h4>
+                    <div className={'results__graphics'}>
+                        <RadarGraphic series={results} categories={categories} className={'principal-graphic'}/>
+                        <div className={'secondary-graphics'}>
+                            {progressBars()}
+
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div className={`static-printable ${printVisible ? '' : 'printable-results'}`} ref={ref} >
+            </Container>
+
+            <div className={`static-printable ${printVisible ? 'printable-results-visible' : 'printable-results-invisible'}`} ref={ref} >
                 <div className={'static-printable'}>
                     <PrintableResults
-                        name={props.name}
+                        name={'name'}
                         results={results}
                         categories={categories}
-                    />
+                    >
+                        {progressBars()}
+                    </PrintableResults>
                 </div>
 
             </div>
@@ -45,10 +109,12 @@ const Results = (props) => {
                 targetRef={ref}
                 filename="assesstment-results.pdf"
                 options={{
-                    orientation: 'landscape'
+                    orientation: 'landscape',
+                    // unit: 'in',
+                    // format: [4, 2]
                 }}
-                x={25}
-                y={25}
+                x={-15}
+                y={-17}
             >
                 {({toPdf}) => (
                     <button
@@ -68,11 +134,8 @@ const Results = (props) => {
             >
                 Volver a presentar
             </button>
+        </div>
 
-
-
-
-        </Container>
     )
 }
 

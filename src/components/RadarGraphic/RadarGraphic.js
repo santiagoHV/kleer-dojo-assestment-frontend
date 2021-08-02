@@ -17,7 +17,7 @@ const RadarGraphic = (props) => {
             className={'graphic'}
             type={'radar'}
             width={getWindowDimensions().width < 600 ? getWindowDimensions().width *0.95: 600}
-            height={getWindowDimensions().width < 500 ? getWindowDimensions().width : 500}
+            height={getWindowDimensions().width < 600 ? getWindowDimensions().width : 600}
             series={[{
                 name: 'Score',
                 data: props.series

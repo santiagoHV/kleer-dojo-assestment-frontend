@@ -10,7 +10,7 @@ const Home = (props) => {
             <Hero />
             <div className={'home__content'}>
                 <Link
-                    to={'/take-assesstment'}
+                    to={'/take-assessment'}
                     className={'btn my-btn-primary home__content--button'}
                 >
                     Tomar assesstment
