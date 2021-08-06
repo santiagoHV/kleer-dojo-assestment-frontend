@@ -1,5 +1,6 @@
 .hero{
     width: 100%;
+    min-height: 10vh;
     margin: 0;
     padding-left: 0 !important;
     display: flex;

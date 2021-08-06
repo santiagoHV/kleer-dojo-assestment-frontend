@@ -95,8 +95,6 @@ const Results = (props) => {
                     filename="assesstment-results.pdf"
                     options={{
                         orientation: 'landscape',
-                        // unit: 'in',
-                        // format: [4, 2]
                     }}
                     x={-35}
                     y={-37}

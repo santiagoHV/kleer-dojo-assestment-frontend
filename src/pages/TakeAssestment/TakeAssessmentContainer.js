@@ -1,54 +1,96 @@
 import React, {useState} from "react";
 import {data} from "../../assets/data";
+import {URLS} from "../../assets/urls";
 import TakeAssessment from "./TakeAssessment";
+import PageLoading from "../../components/PageLoading/PageLoading";
 
 const TakeAssessmentContainer = (props) => {
+
+    const url = `${URLS.backAPIAssessment}/first-assessment-new`
 
     const [basicData, setBasicData] = useState({
         name: '',
         email: ''
     })
 
-    const [categories, setCategories] = useState(data)
+    const [competences, setCompetences] = useState([...data])
 
-    const handleChangeFormValue = (value, index) => {
-        const temporalCategories = categories
+    const [petitionStatus, setPetitionStatus] = useState({
+        loading: false,
+        error: null
+    })
+
+    const handleChangeSlider = (value, index) => {
+        const temporalCategories = competences
         temporalCategories[index].value = value
-        setCategories(temporalCategories)
+        setCompetences(temporalCategories)
+        console.log(competences)
     }
 
-    const handleChangeSlider = (e) => {
+    const handleChangeFormValue = (e) => {
         setBasicData({
             ...basicData,
             [e.target.name]: e.target.value
         })
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        //validate ? :
-        //send
-        props.history.push('/results-assessment/santiago@gmail')
+    const getSendObject = () => {
+        const competencesNames = competences.map((competence) => competence.sendName)
+        const competencesValues = competences.map((competence) => competence.value)
+        let data = {...basicData}
 
-    }
-
-    const handleGoBack = () => {
-        data.forEach((item) => {
-            item.value = 1
+        competencesNames.forEach((name, index) => {
+            data = {
+                ...data,
+                [name]: competencesValues[index]
+            }
         })
-        setCategories(data)
+        return data
     }
 
-    return (
-        <TakeAssessment
-            onChangeSlider={handleChangeSlider}
-            onChangeFormValue={handleChangeFormValue}
-            onSubmit={handleSubmit}
-            onGoBack={handleGoBack}
-            basicData={basicData}
-            categories={categories}
-        />
-    )
+    const sendData = async () => {
+
+        try{
+            const response = await fetch(url, {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(getSendObject())
+            })
+
+            setPetitionStatus({loading: false, error: null})
+
+            await props.history.push(`/results-assessment/${basicData.email}`)
+
+        }catch (error){
+            setPetitionStatus({loading: false, error: error})
+        }
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setPetitionStatus({loading: true, error: null})
+        //validate ? :
+        await sendData()
+    }
+
+    if(petitionStatus.loading){
+        return <PageLoading />
+    }else{
+        return (
+            <TakeAssessment
+                onChangeSlider={handleChangeSlider}
+                onChangeFormValue={handleChangeFormValue}
+                onSubmit={handleSubmit}
+                basicData={basicData}
+                categories={competences}
+                // status={petitionStatus}
+            />
+        )
+    }
+
+
 }
 
 export default TakeAssessmentContainer

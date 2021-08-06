@@ -22,7 +22,7 @@ const FormAssessment = (props) => {
                                 step={1}
                                 min={1}
                                 max={6}
-                                onChange={(e, data) => {props.onChangeFormValue(data,index)}}
+                                onChange={(e, data) => {props.onChange(data,index)}}
                             />
                         </Form.Group>
                     )
@@ -38,7 +38,7 @@ const FormAssessment = (props) => {
                 <Form.Control
                     type={'text'}
                     placeholder={'Ingresa tu nombre completo'}
-                    onChange={props.onChange}
+                    onChange={props.onChangeFormValue}
                     name={'name'}
                 />
             </Form.Group>
@@ -47,7 +47,7 @@ const FormAssessment = (props) => {
                 <Form.Control
                     type={'email'}
                     placeholder={'Ingresa tu email'}
-                    onChange={props.onChange}
+                    onChange={props.onChangeFormValue}
                     name={'email'}
                 />
             </Form.Group>

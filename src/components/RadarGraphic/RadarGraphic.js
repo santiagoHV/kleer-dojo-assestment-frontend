@@ -31,8 +31,8 @@ const RadarGraphic = (props) => {
                 },
                 yaxis: {
                     min: 0,
-                    max: 5,
-                    tickAmount: 5
+                    max: 6,
+                    tickAmount: 6
                 },
                 colors: ['#D83D45'],
             }}

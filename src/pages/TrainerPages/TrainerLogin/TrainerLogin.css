@@ -1,0 +1,10 @@
+#trainer-login{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-color: #EC5E6C;
+    font-family: Mali-SemiBold !important;
+}
