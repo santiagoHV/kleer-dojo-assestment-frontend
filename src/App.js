@@ -14,20 +14,20 @@ import TrainerLogin from "./pages/TrainerPages/TrainerLogin/TrainerLogin";
 function App() {
 
     return (
-        <BrowserRouter className={'SPA'}>
-            <Switch>
-                <Route exact path="/login" component={TrainerLogin}/>
-                <div className={'default-container'}>
-                    <NavBar/>
-                    <Route exact path={'/home'} component={Home}/>
-                    <Route exact path={'/take-assessment'} component={TakeAssessmentContainer}/>
-                    <Route exact path={'/results-assessment/:email'} component={AssessmentResult}/>
-                    <Route exact path={'/trainer-home'} component={HomeTrainer}/>
-                    {/*<Redirect to={'/home'}/>*/}
-                    <Footer/>
-                </div>
-            </Switch>
-        </BrowserRouter>
+            <BrowserRouter className={'SPA'}>
+                <Switch>
+                    <Route exact path="/login" component={TrainerLogin}/>
+                    <div className={'default-container'}>
+                        <NavBar/>
+                        <Route exact path={'/'} component={Home}/>
+                        <Route exact path={'/take-assessment'} component={TakeAssessmentContainer}/>
+                        <Route exact path={'/results-assessment/:email'} component={AssessmentResult}/>
+                        <Route exact path={'/trainer-home'} component={HomeTrainer}/>
+                        {/*<Redirect to={'/home'}/>*/}
+                        <Footer/>
+                    </div>
+                </Switch>
+            </BrowserRouter>
     );
 }
 

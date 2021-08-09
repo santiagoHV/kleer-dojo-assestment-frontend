@@ -1,20 +1,21 @@
-import React, {useState} from "react";
-import {URLS} from "../../../assets/urls";
+import React, {useState, useContext} from "react";
+import {UserContext} from "../../../context/UserContext";
 import GenericLogin from "../../../components/GenericLogin/GenericLogin";
 import './TrainerLogin.css'
+import STORE from '../../../assets/store'
+import {URLS} from "../../../assets/urls";
 
-const TrainerLogin = () => {
-    const url = `${URLS.API}/login`
+const TrainerLogin = (props) => {
+
+    const { login, userData, isAuth} = useContext(UserContext)
+    // const [isAuth, setIsAuth] = useState(false)
 
     const [data,setData] = useState({
         username:'',
         password: ''
     })
 
-    const [status, setStatus] = useState({
-        loading: false,
-        error: null,
-    })
+    const url = `${URLS.API}/login`
 
     const sendCredentials = async () => {
         const response = await fetch(url, {
@@ -26,13 +27,16 @@ const TrainerLogin = () => {
         })
 
         const loginData = await response.json()
-
         console.log(loginData)
+        // setIsAuth(true)
+        localStorage.setItem('prueba', loginData.user)
+
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        sendCredentials()
+        login(data)
+        // sendCredentials()
     }
 
     const handleChange = (e) => {
@@ -40,18 +44,22 @@ const TrainerLogin = () => {
             ...data,
             [e.target.name]: e.target.value
         })
-
-        console.log(data)
     }
 
-    return (
-        <section id={'trainer-login'}>
-            <GenericLogin
-              onChange={handleChange}
-              onSubmit={handleSubmit}
-            />
-        </section>
-    )
+    if(isAuth){
+        props.history.push('/trainer-home')
+    }else {
+        return (
+            <section id={'trainer-login'}>
+                <GenericLogin
+                    onChange={handleChange}
+                    onSubmit={handleSubmit}
+                />
+            </section>
+        )
+    }
+
+
 }
 
 export default TrainerLogin

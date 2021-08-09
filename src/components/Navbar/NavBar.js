@@ -2,6 +2,7 @@ import React from "react";
 import {Container, Nav, Navbar} from "react-bootstrap";
 import Logo from '../../assets/img/logo blanco ACP.png'
 import './NavBar.css'
+import {Link} from "react-router-dom";
 
 const NavBar = () => {
     return (
@@ -12,7 +13,7 @@ const NavBar = () => {
             className={'navbar'}
         >
             <Container className={'navbar__container'}>
-                <Navbar.Brand href="/home">
+                <Navbar.Brand href="/">
                     <img src={Logo} alt={'Logo Kleer Dojo'} height={50}/>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -22,7 +23,7 @@ const NavBar = () => {
                         {/*<Nav.Link href="#/">Contactanos</Nav.Link>*/}
                     </Nav>
                     <Nav>
-                        <Nav.Link href="/">¿Eres trainer?</Nav.Link>
+                        <Link className={'nav-link'} to={'/trainer-home'}>¿Eres trainer?</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
