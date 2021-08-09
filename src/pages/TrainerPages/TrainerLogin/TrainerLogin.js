@@ -2,36 +2,35 @@ import React, {useState, useContext} from "react";
 import {UserContext} from "../../../context/UserContext";
 import GenericLogin from "../../../components/GenericLogin/GenericLogin";
 import './TrainerLogin.css'
-import STORE from '../../../assets/store'
-import {URLS} from "../../../assets/urls";
+import {Redirect} from "react-router-dom";
 
 const TrainerLogin = (props) => {
 
     const { login, userData, isAuth} = useContext(UserContext)
-    // const [isAuth, setIsAuth] = useState(false)
+    console.log(userData)
 
     const [data,setData] = useState({
         username:'',
         password: ''
     })
 
-    const url = `${URLS.API}/login`
+    // const url = `${URLS.API}/login`
 
-    const sendCredentials = async () => {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-
-        const loginData = await response.json()
-        console.log(loginData)
-        // setIsAuth(true)
-        localStorage.setItem('prueba', loginData.user)
-
-    }
+    // const sendCredentials = async () => {
+    //     const response = await fetch(url, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    //
+    //     const loginData = await response.json()
+    //     console.log(loginData)
+    //
+    //     localStorage.setItem('token', loginData.token)
+    //     props.history.push('/trainer-home')
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -47,7 +46,7 @@ const TrainerLogin = (props) => {
     }
 
     if(isAuth){
-        props.history.push('/trainer-home')
+        return <Redirect to={'/trainer-home'}/>
     }else {
         return (
             <section id={'trainer-login'}>

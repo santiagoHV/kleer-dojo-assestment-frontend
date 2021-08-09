@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Container, Nav, Navbar} from "react-bootstrap";
 import Logo from '../../assets/img/logo blanco ACP.png'
 import './NavBar.css'
 import {Link} from "react-router-dom";
+import {UserContext} from "../../context/UserContext";
 
 const NavBar = () => {
+
+    const {isAuth, userData} = useContext(UserContext)
+
     return (
         <Navbar
             collapseOnSelect
@@ -13,8 +17,10 @@ const NavBar = () => {
             className={'navbar'}
         >
             <Container className={'navbar__container'}>
-                <Navbar.Brand href="/">
-                    <img src={Logo} alt={'Logo Kleer Dojo'} height={50}/>
+                <Navbar.Brand >
+                    <Link to={'/'}>
+                        <img src={Logo} alt={'Logo Kleer Dojo'} height={50}/>
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -23,7 +29,7 @@ const NavBar = () => {
                         {/*<Nav.Link href="#/">Contactanos</Nav.Link>*/}
                     </Nav>
                     <Nav>
-                        <Link className={'nav-link'} to={'/trainer-home'}>¿Eres trainer?</Link>
+                        <Link className={'nav-link'} to={'/trainer-home'}>{isAuth ? userData.name.toUpperCase() : '¿Eres Trainer?'}</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

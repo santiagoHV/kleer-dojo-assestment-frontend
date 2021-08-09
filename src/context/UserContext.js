@@ -47,7 +47,7 @@ function UserProvider({ children }) {
     return (
         <UserContext.Provider
             value={{
-                userData: { user },
+                userData: user,
                 isAuth: token !== '',
                 error,
                 token,
