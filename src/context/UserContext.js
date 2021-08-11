@@ -4,13 +4,25 @@ import {URLS} from "../assets/urls";
 export const UserContext = createContext(null);
 
 function UserProvider({ children }) {
-    const [token, setToken] = useState('');
-    const [error, setError] = useState(null)
-    const [user, setUser] = useState(null);
+    const [token, setToken] = useState(() => {
+        const local = localStorage.getItem('token')
+        return local ? local : ''
 
-    const url = `${URLS.API}/login`
+    });
+    const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(false)
+
+    const [user, setUser] = useState(() => {
+        const local = JSON.parse(localStorage.getItem('user'))
+        return local ? local : null
+    });
+
+
 
     async function login(data){
+
+        const url = `${URLS.API}/login`
+        setLoading(true)
 
         const response = await fetch(url, {
             method: 'POST',
@@ -23,36 +35,67 @@ function UserProvider({ children }) {
         const loginData = await response.json()
 
         console.log('login data')
-        await console.log(loginData.token)
+        console.log(loginData)
 
         if(loginData.error){
-            setError(await loginData.error)
+            setError(loginData.error)
         }else{
-            setToken(await loginData.token)
-            setUser(await loginData.user)
+            localStorage.setItem('user', JSON.stringify(loginData.user))
+            localStorage.setItem('token', loginData.token)
+            setUser(loginData.user)
+            setToken(loginData.token)
         }
+        setLoading(false)
 
-        console.log('after possible error')
-        console.log(loginData.message)
-        console.log('token desde context' + token)
+
     }
 
-    function logout() {
-        // Fetch to logout
-        // then delete Data
-        setUser(null);
-        setToken('');
+    async function logout() {
+        const url = `${URLS.API}/logout`
+        setLoading(true)
+
+        const response = await fetch(`${url}?token=${token}`)
+        const logoutData = await response.json()
+
+        if(logoutData.error){
+            setError(logoutData.error)
+        }else {
+            localStorage.setItem('user', null)
+            localStorage.setItem('token', null)
+            setUser(null)
+            setToken('')
+        }
+        setLoading(false)
+    }
+
+    async function refreshToken(){
+        const url = `${URLS.API}/refresh-token`
+        setLoading(true)
+
+        const response = await fetch(`${url}?username=${user.username}`)
+        const fetchData = await response.json()
+
+        if(fetchData.error){
+            setError(fetchData.error)
+        }else {
+            localStorage.setItem('token', fetchData.token)
+            setToken(fetchData.token)
+        }
+        setLoading(false)
+
     }
 
     return (
         <UserContext.Provider
             value={{
                 userData: user,
+                loadingUserProcess: loading,
                 isAuth: token !== '',
                 error,
                 token,
                 login,
-                logout
+                logout,
+                refreshToken
             }}
         >
             {children}

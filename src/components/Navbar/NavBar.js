@@ -7,7 +7,9 @@ import {UserContext} from "../../context/UserContext";
 
 const NavBar = () => {
 
-    const {isAuth, userData} = useContext(UserContext)
+    const {isAuth, userData, logout, token} = useContext(UserContext)
+    console.log('isAuth ' + isAuth)
+    console.log('token :' + token)
 
     return (
         <Navbar
@@ -29,6 +31,7 @@ const NavBar = () => {
                         {/*<Nav.Link href="#/">Contactanos</Nav.Link>*/}
                     </Nav>
                     <Nav>
+                        <p className={'nav-link'} onClick={logout}>logout</p>
                         <Link className={'nav-link'} to={'/trainer-home'}>{isAuth ? userData.name.toUpperCase() : '¿Eres Trainer?'}</Link>
                     </Nav>
                 </Navbar.Collapse>

@@ -7,14 +7,16 @@ import './HomeTrainer.css'
 import STORE from '../../../assets/store'
 import {UserContext} from "../../../context/UserContext";
 import {Redirect} from "react-router-dom";
+import useFetchApi from "../../../hooks/useFetchAPI";
 
 const HomeTrainer = (props) => {
+
+    const [{data, loading, error}, getData] = useFetchApi('/single-assessment/first-assessment', true)
+
     const url = `${URLS.backAPIAssessment}/first-assessment`
 
-    const { userData, error, isAuth, token} = useContext(UserContext)
-    // const isAuth = true
 
-    // const token = localStorage.getItem('token')
+    const { userData, error, isAuth, token, refreshToken, loadingUserProcess} = useContext(UserContext)
 
     const [data, setData] = useState([])
     const [status, setStatus] = useState({
@@ -26,7 +28,6 @@ const HomeTrainer = (props) => {
         fetchData()
     },[])
 
-    console.log(userData)
 
     const fetchData = async () => {
         try {
@@ -44,6 +45,8 @@ const HomeTrainer = (props) => {
         }catch (error){
             setStatus({loading: false, error: error})
         }
+
+        console.log('token ' + token)
     }
 
     const renderCards = () => {
@@ -68,19 +71,18 @@ const HomeTrainer = (props) => {
         )
     }
 
-    console.log(token)
-
-    if(status.loading){
+    if(status.loading ){
         return <PageLoading />
     }else if(status.error || data.error){
-        console.log('else if')
         if(!isAuth){
            return <Redirect to={'/login'} />
+        }else if(data.expired){
+            refreshToken()
+            fetchData()
         }
-        // props.history.push('/login')
+
         return `${status.error || data.error}`
     }else {
-        console.log('else')
         return (
             <section>
                 <Container className={'assessment-group'}>
