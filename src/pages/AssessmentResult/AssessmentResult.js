@@ -6,38 +6,49 @@ import PageLoading from "../../components/PageLoading/PageLoading";
 const AssessmentResult = (props) => {
     const [email, setEmail] = useState(props.match.params.email)
     const API = URLS.backAPIAssessment
+    const [state, setState] = useState({
+        loading: true,
+        error: null,
+        data: null
+    })
     const [data, setData] = useState({})
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
 
     useEffect(() => {
         getAssessment()
-    },[])
+    }, [])
 
     const getAssessment = async () => {
 
-        try {
-            const response = await fetch(`${API}/first-assessment/${email}`)
-            const data = await response.json()
+        const response = await fetch(`${API}/first-assessment/${email}`)
+        const responseData = await response.json()
 
-            setData(data)
-            setLoading(false)
-        }catch (error){
-            setError(error)
+        console.log(responseData)
+
+
+        if (responseData.error) {
+            setState({error: responseData.error, loading: false, data: null})
+        } else {
+            setState({error: null, loading: false, data: responseData})
         }
     }
 
 
-    if(loading){
-        return (<PageLoading />)
+    if (state.loading) {
+        return <PageLoading/>
+    }
+    if (state.error) {
+        return state.error
+    }
 
-    }else if(!loading){
+    if (!state.loading) {
+        console.log(data)
         return (
             <section>
                 <Results
-                    results={data}
+                    results={state.data}
                     email={email}
-                    goBack={() => {}}
+                    goBack={() => {
+                    }}
                 />
             </section>
         )

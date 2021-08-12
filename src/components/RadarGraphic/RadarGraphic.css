@@ -3,6 +3,11 @@
     margin-left: 0;
 }
 
+.apexcharts-datalabel{
+    color: black !important;
+    font-size: 15px;
+}
+
 .apexcharts-toolbar{
     display: none !important;
 }

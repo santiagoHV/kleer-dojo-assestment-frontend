@@ -8,7 +8,7 @@ import Footer from "./components/Footer/Footer";
 import Home from "./pages/home/Home";
 import TakeAssessmentContainer from "./pages/TakeAssestment/TakeAssessmentContainer";
 import AssessmentResult from "./pages/AssessmentResult/AssessmentResult";
-import HomeTrainer from "./pages/TrainerPages/HomeTrainer/HomeTrainer";
+import HomeTrainerContainer from "./pages/TrainerPages/HomeTrainer/HomeTrainerContainer";
 import TrainerLogin from "./pages/TrainerPages/TrainerLogin/TrainerLogin";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
                         <Route exact path={'/'} component={Home}/>
                         <Route exact path={'/take-assessment'} component={TakeAssessmentContainer}/>
                         <Route exact path={'/results-assessment/:email'} component={AssessmentResult}/>
-                        <Route exact path={'/trainer-home'} component={HomeTrainer}/>
+                        <Route exact path={'/trainer-home'} component={HomeTrainerContainer}/>
                         {/*<Redirect to={'/home'}/>*/}
                         <Footer/>
                     </div>

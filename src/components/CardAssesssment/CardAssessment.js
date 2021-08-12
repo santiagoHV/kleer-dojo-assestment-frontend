@@ -13,11 +13,17 @@ const CardAssessment = (props) => {
                 </Card.Text>
                 <Card.Link >
                     <Link
-                        className={'btn my-btn-primary'}
+                        className={'btn'}
                         to={`/results-assessment/${props.email}`}
                     >
                         Detalles
                     </Link>
+                    <button
+                        className={'btn my-btn-primary'}
+                        onClick={props.onDelete}
+                    >
+                        Borrar
+                    </button>
                 </Card.Link>
             </Card.Body>
         </Card>

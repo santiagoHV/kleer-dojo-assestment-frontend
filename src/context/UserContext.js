@@ -1,16 +1,20 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 import {URLS} from "../assets/urls";
 
 export const UserContext = createContext(null);
 
+
 function UserProvider({ children }) {
+
+
     const [token, setToken] = useState(() => {
         const local = localStorage.getItem('token')
+
+        console.log('en el hook tenemos el  ' + local)
         return local ? local : ''
 
     });
     const [error, setError] = useState(null)
-    const [loading, setLoading] = useState(false)
 
     const [user, setUser] = useState(() => {
         const local = JSON.parse(localStorage.getItem('user'))
@@ -22,7 +26,6 @@ function UserProvider({ children }) {
     async function login(data){
 
         const url = `${URLS.API}/login`
-        setLoading(true)
 
         const response = await fetch(url, {
             method: 'POST',
@@ -45,14 +48,12 @@ function UserProvider({ children }) {
             setUser(loginData.user)
             setToken(loginData.token)
         }
-        setLoading(false)
 
 
     }
 
     async function logout() {
         const url = `${URLS.API}/logout`
-        setLoading(true)
 
         const response = await fetch(`${url}?token=${token}`)
         const logoutData = await response.json()
@@ -65,12 +66,10 @@ function UserProvider({ children }) {
             setUser(null)
             setToken('')
         }
-        setLoading(false)
     }
 
     async function refreshToken(){
         const url = `${URLS.API}/refresh-token`
-        setLoading(true)
 
         const response = await fetch(`${url}?username=${user.username}`)
         const fetchData = await response.json()
@@ -79,9 +78,17 @@ function UserProvider({ children }) {
             setError(fetchData.error)
         }else {
             localStorage.setItem('token', fetchData.token)
-            setToken(fetchData.token)
+            setToken(localStorage.getItem('token'))
+            setToken((token) => {
+                console.log(token)
+                return token
+            })
+            console.log(token + ' sera que si ome?')
+
+            console.log('el que esta en el storage ' + localStorage.getItem('token'))
+            console.log('token nuevo: ' + fetchData.token)
         }
-        setLoading(false)
+        console.log('token nuevo en el metodo de refresh ' + token)
 
     }
 
@@ -89,8 +96,7 @@ function UserProvider({ children }) {
         <UserContext.Provider
             value={{
                 userData: user,
-                loadingUserProcess: loading,
-                isAuth: token !== '',
+                isAuth: token !== '' && token !== 'null',
                 error,
                 token,
                 login,

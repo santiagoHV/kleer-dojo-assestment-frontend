@@ -27,12 +27,28 @@ const RadarGraphic = (props) => {
                     type: 'radar',
                 },
                 xaxis: {
-                    categories: props.categories
+                    categories: props.categories,
+                    labels: {
+                        style: {
+                            colors: ["#000000","#000000","#000000","#000000","#000000","#000000"],
+                            fontSize: "11px",
+                            fontFamily: 'Arial'
+                        }
+                    }
                 },
                 yaxis: {
                     min: 0,
                     max: 6,
-                    tickAmount: 6
+                    tickAmount: 6,
+                    labels: {
+                        style: {
+                            colors: [],
+                            fontSize: '12px',
+                            fontFamily: 'Helvetica, Arial, sans-serif',
+                            fontWeight: 400,
+                            cssClass: 'apexcharts-yaxis-label',
+                        },
+                    }
                 },
                 colors: ['#D83D45'],
             }}

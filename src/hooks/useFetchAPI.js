@@ -16,7 +16,8 @@ function useFetchApi(endpoint='', isPrivate=false){
             const response = await fetch(BASE_URL + endpoint, {
                 method: 'GET',
                 headers: {
-                    authorization: isPrivate ? `token ${token}` : '',
+                    //lo ideal es usar el token del contexto pero set token no esta funcionando automatico
+                    authorization: isPrivate ? `token ${localStorage.getItem('token')}` : '',
                 }
             });
 
@@ -26,11 +27,21 @@ function useFetchApi(endpoint='', isPrivate=false){
             }
 
             const data = await response.json()
-            setState({
-                data,
-                loading: false,
-                error: null
-            })
+
+            if(data.error){
+                setState({
+                    data:null,
+                    loading: false,
+                    error: data.error
+                })
+            }else{
+                setState({
+                    data,
+                    loading: false,
+                    error: null
+                })
+            }
+
         } catch (error) {
             setState({
                 data: null,
