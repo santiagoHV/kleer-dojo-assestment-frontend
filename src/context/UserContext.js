@@ -61,10 +61,11 @@ function UserProvider({ children }) {
         if(logoutData.error){
             setError(logoutData.error)
         }else {
-            localStorage.setItem('user', null)
             localStorage.setItem('token', null)
-            setUser(null)
+            localStorage.setItem('user', null)
+
             setToken('')
+            setUser(null)
         }
     }
 
@@ -96,7 +97,7 @@ function UserProvider({ children }) {
         <UserContext.Provider
             value={{
                 userData: user,
-                isAuth: token !== '' && token !== 'null',
+                isAuth: token !== '' && token !== 'null',// && localStorage.getItem('token') !== 'null',
                 error,
                 token,
                 login,

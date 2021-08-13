@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import {UserContext} from "../context/UserContext";
+import {URLS} from "../assets/urls";
 
-const BASE_URL = 'http://localhost:8000'
+const BASE_URL = URLS.API
 
 function useFetchApi(endpoint='', isPrivate=false){
     const { token, refreshToken } = useContext(UserContext);

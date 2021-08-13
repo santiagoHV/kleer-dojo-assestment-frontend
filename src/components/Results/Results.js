@@ -5,6 +5,7 @@ import './Results.css'
 import {Container, ProgressBar} from "react-bootstrap";
 import ReactToPdf from "react-to-pdf";
 import PrintableResults from "../PrintableResults/PrintableResults";
+import levels from '../../models/levels'
 
 const Results = (props) => {
 
@@ -27,23 +28,6 @@ const Results = (props) => {
         }
     }
 
-    const getLevel = (level) => {
-        switch (level){
-            case 1:
-                return 'Novato'
-            case 2:
-                return 'Principiante'
-            case 3:
-                return 'Competente'
-            case 4:
-                return 'Avanzado'
-            case 5:
-                return 'Profesional'
-            case 6:
-                return 'Experto'
-        }
-    }
-
 
     const progressBars = () => {
         return(
@@ -55,7 +39,7 @@ const Results = (props) => {
                                 {categories[index].replace(/^\w/, (c) => c.toUpperCase())}
                             </h4>
                             <p className={'competence-container__level'}>
-                                {getLevel(item)}
+                                {levels.getLevel(item)}
                             </p>
                             <ProgressBar
                                 now={item / 6 * 100}

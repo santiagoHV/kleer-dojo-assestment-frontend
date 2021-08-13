@@ -13,6 +13,9 @@ const NavBar = (props) => {
     const [showNav, setShowNav] = useState(false)
     const [email, setEmail] = useState('')
 
+    // console.log('auth ' + isAuth)
+    // console.log('token ' + token)
+
 
     const handleCloseNav = () => setShowNav(false)
     const handleSubmit = () => {

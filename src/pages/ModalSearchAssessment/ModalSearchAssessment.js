@@ -4,8 +4,10 @@ import {Form, Modal, Button} from "react-bootstrap";
 const ModalSearchAssessment = (props) => {
     return (
         <Modal show={props.show} onHide={props.onClose}>
-            <Modal.Header closeButton>
+            <Modal.Header>
                 <Modal.Title>Ingresa tu email</Modal.Title>
+                <button className={'btn-close m-1'}
+                        onClick={props.onClose}/>
             </Modal.Header>
             <Modal.Body>
                 <Form.Group>

@@ -6,7 +6,7 @@ import PageLoading from "../../components/PageLoading/PageLoading";
 
 const TakeAssessmentContainer = (props) => {
 
-    const url = `${URLS.backAPIAssessment}/first-assessment-new`
+    const url = `${URLS.API}/single-assessment/first-assessment-new`
 
     const [basicData, setBasicData] = useState({
         name: '',

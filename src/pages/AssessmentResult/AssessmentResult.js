@@ -5,7 +5,7 @@ import PageLoading from "../../components/PageLoading/PageLoading";
 
 const AssessmentResult = (props) => {
     const [email, setEmail] = useState(props.match.params.email)
-    const API = URLS.backAPIAssessment
+    const API = URLS
     const [state, setState] = useState({
         loading: true,
         error: null,
@@ -18,11 +18,11 @@ const AssessmentResult = (props) => {
     }, [])
 
     const getAssessment = async () => {
-
-        const response = await fetch(`${API}/first-assessment/${email}`)
+        console.log(`${URLS.API}/single-assessment/first-assessment/${email}`)
+        const response = await fetch(`${URLS.API}/single-assessment/first-assessment/${email}`)
         const responseData = await response.json()
 
-        console.log(responseData)
+
 
 
         if (responseData.error) {
@@ -41,7 +41,6 @@ const AssessmentResult = (props) => {
     }
 
     if (!state.loading) {
-        console.log(data)
         return (
             <section>
                 <Results
