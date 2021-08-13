@@ -1,6 +1,7 @@
 import React from "react";
 import {Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import levels from "../../models/levels";
 
 const CardAssessment = (props) => {
     return (
@@ -9,7 +10,7 @@ const CardAssessment = (props) => {
                 <Card.Title>{props.name}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">{props.date}</Card.Subtitle>
                 <Card.Text>
-                    Promedio: experto
+                    Promedio: {props.averange}
                 </Card.Text>
                 <Card.Link >
                     <Link

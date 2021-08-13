@@ -2,6 +2,7 @@ import React from "react";
 import {Col, Container, Row} from "react-bootstrap";
 import CardAssessment from "../../../components/CardAssesssment/CardAssessment";
 import './HomeTrainer.css'
+import levels from "../../../models/levels";
 
 const HomeTrainer = (props) => {
 
@@ -20,6 +21,7 @@ const HomeTrainer = (props) => {
                                 name={assessment.name}
                                 date={assessment.date}
                                 email={assessment.email}
+                                averange={levels.getLevel(levels.getAverage(assessment))}
                                 onDelete={() => {props.onDeleteAssessment(assessment.email)}}
                             />
                         </Col>

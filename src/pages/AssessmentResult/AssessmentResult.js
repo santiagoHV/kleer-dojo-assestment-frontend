@@ -23,8 +23,6 @@ const AssessmentResult = (props) => {
         const responseData = await response.json()
 
 
-
-
         if (responseData.error) {
             setState({error: responseData.error, loading: false, data: null})
         } else {

@@ -14,5 +14,18 @@ export default {
             case 6:
                 return 'Experto'
         }
+    },
+    getAverage: (assessment) => {
+        let list = []
+        for(let item in assessment){
+            if(typeof(assessment[item]) === 'number'){
+                list.push(assessment[item])
+            }
+        }
+        let sum = list.reduce((init, item) => {
+            return init += item
+        }, 0)
+        let averange = Math.trunc(sum / 6)
+        return averange
     }
 }

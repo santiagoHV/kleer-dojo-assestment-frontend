@@ -19,6 +19,7 @@ const GenericLogin = (props) => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         name={'password'}
+                        type={'password'}
                         onChange={props.onChange}
                     />
                 </Form.Group>
