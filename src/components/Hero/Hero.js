@@ -1,5 +1,5 @@
 import React from "react";
-import KleerDojo from '../../assets/img/kleer_dojo.jpg'
+import KleerDojo from '../../assets/imgold/kleer_dojo.jpg'
 import './Hero.css'
 
 const Hero = () => {

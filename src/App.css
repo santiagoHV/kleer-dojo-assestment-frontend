@@ -7,10 +7,6 @@
   pointer-events: none;
 }
 
-.SPA{
-  overflow-x: hidden;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -46,6 +42,6 @@
 }
 
 .my-btn-primary{
-  background-color: #D83D45 !important;
+  background-color: #4579b2 !important;
   color: white !important;
 }

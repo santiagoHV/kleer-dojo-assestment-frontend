@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
@@ -13,13 +13,20 @@ import TrainerLogin from "./pages/TrainerPages/TrainerLogin/TrainerLogin";
 
 function App() {
 
+    const [whiteNav, setWhiteNav] = useState(false)
+    const handleWhiteNav = () => setWhiteNav(true)
+    const handleRedNav = () => setWhiteNav(false)
+
     return (
             <BrowserRouter className={'SPA'}>
                 <Switch>
                     <Route exact path="/login" component={TrainerLogin}/>
                     <div className={'default-container'}>
-                        <NavBar/>
-                        <Route exact path={'/'} component={Home}/>
+                        <NavBar whiteTheme={whiteNav}/>
+                        <Route exact path={'/'} component={() => <Home
+                                                                onWhiteNav={handleWhiteNav}
+                                                                onRedNav={handleRedNav}
+                        />}/>
                         <Route exact path={'/take-assessment'} component={TakeAssessmentContainer}/>
                         <Route exact path={'/results-assessment/:email'} component={AssessmentResult}/>
                         <Route exact path={'/trainer-home'} component={HomeTrainerContainer}/>

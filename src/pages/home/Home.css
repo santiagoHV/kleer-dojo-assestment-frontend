@@ -1,18 +1,48 @@
 .home{
-    height: 100%;
+    height: calc(100vh - 50px);
+    width: 100%;
     padding: 0 !important;
-    font-family: Mali-SemiBold !important;
+    font-family: 'Raleway', sans-serif !important;
+    background-color: #eb5e6b;
+    background-image: url("../../assets/img/fondo.png");
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    overflow-x: hidden;
+    font-weight: 500;
+}
+
+.home-container{
+    height: 100%;
+    width: 100vw;
+    margin: 0 0 0 0;
+    /*flex-direction: row;*/
 }
 
 .home__content{
-    min-height: 60vh;
-    height: 100%;
-    width: 100%;
+    height: 80%;
+    color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-content: center;
-    align-items: center;
+    text-align: center;
+}
+
+
+.home__content img{
+    width: 60%;
+    margin: 0 auto 0 auto;
+}
+
+.home__content--button{
+    padding: 15px;
+    width: 250px;
+    margin: 0 auto 0 auto;
+    font-size: 30px;
 }
 
 .home__content--description{
@@ -20,6 +50,51 @@
     text-align: center;
 }
 
-.home__content--button{
-    padding: 20px;
+.image-container{
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-end;
+    align-items: flex-end;
+    height: 100%;
 }
+
+.home-img{
+    max-width: 585px;
+    max-height: 550px;
+    width: 100%;
+
+    margin: 0 0 0 -20%
+}
+
+@media screen and (max-width: 900px){
+    .home{
+        height: calc(100vh - 80px);
+    }
+    .home-container{
+         height: 80vh;
+     }
+    .row{
+        height: 100%;
+    }
+    .home-img{
+        display: none;
+    }
+    .image-container{
+        height: 0;
+    }
+    .home__content{
+        max-width: 100vw;
+        width: 95%;
+        box-sizing: border-box !important;
+    }
+    .home__content--description{
+        width: 95%;
+    }
+    .home-container{
+        padding: 0;
+    }
+    .brand-text{
+        display: none !important;
+    }
+}
+
