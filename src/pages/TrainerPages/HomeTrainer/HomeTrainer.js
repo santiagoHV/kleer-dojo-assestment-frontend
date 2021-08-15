@@ -9,11 +9,11 @@ const HomeTrainer = (props) => {
 
     const renderCards = () => {
         return (
-            <Row>
+            <Row id={'home-trainer'}>
                 {props.data.map((assessment) => {
                     return (
                         <Col
-                            sm={4}
+                            sm={10} lg={4}
                             className={'assessment-card'}
                             key={assessment.email}
                         >
