@@ -2,36 +2,32 @@ import React from "react";
 import ReactApexChart from 'react-apexcharts'
 import './RadarGraphic.css'
 
-const getWindowDimensions = () => {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-        width,
-        height
-    };
-}
 
 
 const RadarGraphic = (props) => {
-    return(
-       <ReactApexChart
+    return (
+        <ReactApexChart
             className={'graphic'}
             type={'radar'}
-            width={getWindowDimensions().width < 600 ? getWindowDimensions().width *0.95: 600}
-            height={getWindowDimensions().width < 600 ? getWindowDimensions().width : 600}
+            width={props.width}
+            height={props.height ? props.height : props.width * 0.7}
             series={[{
                 name: 'Score',
                 data: props.series
             }]}
             options={{
                 chart: {
+                    animations: {
+                        enabled: props.animated
+                    },
                     type: 'radar',
                 },
                 xaxis: {
                     categories: props.categories,
                     labels: {
                         style: {
-                            colors: ["#000000","#000000","#000000","#000000","#000000","#000000"],
-                            fontSize: "11px",
+                            colors: ["#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
+                            fontSize: `${props.fontSize}px`,
                             fontFamily: 'Arial'
                         }
                     }
@@ -43,7 +39,7 @@ const RadarGraphic = (props) => {
                     labels: {
                         style: {
                             colors: [],
-                            fontSize: '12px',
+                            fontSize: `${props.fontSize + 2}px`,
                             fontFamily: 'Helvetica, Arial, sans-serif',
                             fontWeight: 400,
                             cssClass: 'apexcharts-yaxis-label',
@@ -52,7 +48,7 @@ const RadarGraphic = (props) => {
                 },
                 colors: ['#D83D45'],
             }}
-       />
+        />
     )
 }
 

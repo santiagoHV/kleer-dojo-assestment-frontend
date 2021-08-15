@@ -7,12 +7,25 @@ import ReactToPdf from "react-to-pdf";
 import PrintableResults from "../PrintableResults/PrintableResults";
 import levels from '../../models/levels'
 
+const getWindowDimensions = () => {
+    const { availWidth: width, availHeight: height } = window.screen;
+    const pantalla = window.screen
+    console.log(pantalla)
+    return {
+        width,
+        height
+    };
+}
+
+
 const Results = (props) => {
 
     const [printVisible, setPrintVisible] = useState(false)
+    const isMobile = getWindowDimensions().width <= 700
     let results = [], categories = []
     let name, date, email
 
+    //ref to print pdf
     const ref = React.createRef()
 
     for(let i in props.results){
@@ -31,13 +44,13 @@ const Results = (props) => {
 
     const progressBars = () => {
         return(
-            <div>
+            <div className={'competence-container'}>
                 {results.map((item, index) => {
                     return (
                         <div className={'competence-container'}>
-                            <h4 className={'competence-container__title'}>
+                            <h3 className={'competence-container__title'}>
                                 {categories[index].replace(/^\w/, (c) => c.toUpperCase())}
-                            </h4>
+                            </h3>
                             <p className={'competence-container__level'}>
                                 {levels.getLevel(item)}
                             </p>
@@ -66,7 +79,15 @@ const Results = (props) => {
                         {name.toUpperCase()}
                     </h4>
                     <div className={'results__graphics'}>
-                        <RadarGraphic series={results} categories={categories} className={'principal-graphic'}/>
+                        <RadarGraphic
+                            series={results}
+                            categories={categories}
+                            className={'principal-graphic'}
+                            width={isMobile ? getWindowDimensions().width : 600}//600
+                            height={isMobile ? null : 500}
+                            fontSize={isMobile ? 6 : 12}
+                            animated={true}
+                        />
                         <div className={'secondary-graphics'}>
                             {progressBars()}
 

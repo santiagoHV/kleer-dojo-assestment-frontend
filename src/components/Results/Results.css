@@ -49,8 +49,6 @@
     margin: 10px;
 }
 
-.results-logo{
-}
 
 .progress-bar{
     height: 10px;
@@ -80,6 +78,12 @@
         padding: 0;
     }
 
+    .results__container h1, h4{
+        margin: 20px;
+        text-align: center;
+        width: 100%;
+    }
+
     .results__graphics{
         flex-direction: column;
         margin-left: 0;
@@ -93,11 +97,27 @@
     .secondary-graphics{
         flex-direction: row !important;
         justify-content: space-around;
-        width: 100%;
+        width: 100vw;
     }
 
     .principal-graphic{
         margin-left: -50px;
+    }
+
+    .competence-container{
+        width: 100%;
+        padding: 0 20px;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+    .progress-bar{
+        width: 100%;
+    }
+
+    .results--btn{
+        margin: 40px;
+        width: calc(100% - 40px);
     }
 
 }
