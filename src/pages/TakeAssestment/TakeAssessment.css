@@ -1,5 +1,46 @@
+#take-assessment{
+    min-height: calc(100vh - 120px);
+}
+
 .form-container{
+    margin: 0;
+    width: 100vw;
+    height: 100%;
+}
+
+.form-container-row{
     margin-top: 50px;
-    margin-bottom: 100px;
-    max-width: 500px;
+    width: 100vw;
+    min-height: calc(100vh - 120px);
+}
+
+.img-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+    align-items: flex-end;
+
+}
+
+.img-container img{
+    max-width: 100%;
+    height: 50%;
+    margin-bottom: 0 !important;
+}
+
+.form--btn{
+    font-size: 25px;
+    max-width: 150px;
+}
+
+@media screen and (max-width: 900px){
+    .form-container{
+        padding: 0;
+        margin: 0;
+    }
+    .form-container-row{
+        margin: 0;
+    }
 }

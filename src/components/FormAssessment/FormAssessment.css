@@ -14,8 +14,61 @@
     width: 300px;
 }
 
+.form__basic-data{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.form__basic-data h2{
+    font-size: 40px;
+    text-align: center;
+
+}
+
+.basic-data__form-group{
+    padding-top: 50px;
+    max-width: 500px;
+    width: 70%;
+}
+
+
+.center-container{
+    padding: 30px 60px 30px 60px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.sliders-container{
+    width: 80%;
+    max-width: 500px;
+}
+
+
+
+
 @media screen and (max-width: 700px){
+    .col-sm-9{
+        padding: 0;
+    }
     .form{
+        width: 100vw;
         padding: 10px;
+    }
+
+    .form__basic-data h2{
+        font-size: 30px;
+    }
+    .basic-data__form-group{
+        width: 100%;
+    }
+    .sliders-container{
+        width: 100%;
+    }
+    .center-container {
+        padding: 0 35px 0 35px;
     }
 }
