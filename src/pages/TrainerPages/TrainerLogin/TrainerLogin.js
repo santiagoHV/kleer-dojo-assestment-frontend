@@ -7,35 +7,19 @@ import {Redirect} from "react-router-dom";
 const TrainerLogin = (props) => {
 
     const { login, userData, isAuth} = useContext(UserContext)
-    console.log(userData)
+    const [loginData, setLoginData] = useState({});
 
     const [data,setData] = useState({
         username:'',
         password: ''
     })
 
-    // const url = `${URLS.API}/login`
 
-    // const sendCredentials = async () => {
-    //     const response = await fetch(url, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    //
-    //     const loginData = await response.json()
-    //     console.log(loginData)
-    //
-    //     localStorage.setItem('token', loginData.token)
-    //     props.history.push('/trainer-home')
-    // }
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        login(data)
+        setLoginData(await login(data))
         // sendCredentials()
+        console.log(loginData)
     }
 
     const handleChange = (e) => {
@@ -54,6 +38,7 @@ const TrainerLogin = (props) => {
                     onChange={handleChange}
                     onSubmit={handleSubmit}
                 />
+                {loginData.error ? loginData.error : ''}
             </section>
         )
     }

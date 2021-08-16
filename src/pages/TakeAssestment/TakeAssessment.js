@@ -18,6 +18,7 @@ const TakeAssessment = (props) => {
                             onChangeFormValue={props.onChangeFormValue}
                             onChange={props.onChangeSlider}
                             onSubmit={props.onSubmit}
+                            isValid={props.isValid}
                         />
                     </Col>
                     <Col sm={3}>

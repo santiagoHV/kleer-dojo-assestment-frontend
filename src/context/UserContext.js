@@ -37,9 +37,6 @@ function UserProvider({ children }) {
 
         const loginData = await response.json()
 
-        console.log('login data')
-        console.log(loginData)
-
         if(loginData.error){
             setError(loginData.error)
         }else{
@@ -49,7 +46,7 @@ function UserProvider({ children }) {
             setToken(loginData.token)
         }
 
-
+        return loginData
     }
 
     async function logout() {

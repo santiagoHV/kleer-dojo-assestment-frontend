@@ -1,9 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import {Form, Modal, Button} from "react-bootstrap";
+import validators from "../../models/validators";
+import './ModalSearchAssessment.css'
 
 const ModalSearchAssessment = (props) => {
+    const [isValid, setIsValid] = useState(true)
+
+    const handleChange = (e) => {
+        if(!validators.validateEmail(e.target.value)){
+            setIsValid(false)
+        }else{
+            setIsValid(true)
+        }
+        props.onChange(e)
+    }
+
+    const handleSubmit = () => {
+        if(isValid){
+            props.onSubmit()
+        }else {
+            //texto invalidando el control
+        }
+    }
     return (
-        <Modal show={props.show} onHide={props.onClose}>
+        <Modal
+            show={props.show}
+            onHide={props.onClose}
+            id={'modalSearchAssessment'}
+        >
             <Modal.Header>
                 <Modal.Title>Ingresa tu email</Modal.Title>
                 <button className={'btn-close m-1'}
@@ -15,7 +39,8 @@ const ModalSearchAssessment = (props) => {
                     <Form.Control
                         name={'email'}
                         type={'email'}
-                        onChange={props.onChange}
+                        onChange={handleChange}
+                        className={!isValid ? 'form-error-control' : ''}
                     />
                 </Form.Group>
             </Modal.Body>
@@ -23,7 +48,7 @@ const ModalSearchAssessment = (props) => {
                 <Button variant="secondary" onClick={props.onClose}>
                     Cerrar
                 </Button>
-                <Button variant="primary" onClick={props.onSubmit}>
+                <Button className={'my-btn-primary'} onClick={handleSubmit}>
                     Buscar
                 </Button>
             </Modal.Footer>

@@ -6,7 +6,6 @@ import levels from "../../models/levels";
 
 const FormAssessment = (props) => {
 
-
     const sliders = () => {
         return (
             <div>
@@ -46,6 +45,7 @@ const FormAssessment = (props) => {
                                 placeholder={'Ingresa tu nombre completo'}
                                 onChange={props.onChangeFormValue}
                                 name={'name'}
+                                className={props.isValid.name ? '' : 'form-error-control'}
                             />
                         </Form.Group>
                         <Form.Group className="mb-3">
@@ -55,6 +55,7 @@ const FormAssessment = (props) => {
                                 placeholder={'Ingresa tu email'}
                                 onChange={props.onChangeFormValue}
                                 name={'email'}
+                                className={props.isValid.email ? '' :'form-error-control'}
                             />
                         </Form.Group>
                     </div>

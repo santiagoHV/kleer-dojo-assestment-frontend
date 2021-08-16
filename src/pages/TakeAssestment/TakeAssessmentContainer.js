@@ -3,6 +3,7 @@ import {data} from "../../assets/data";
 import {URLS} from "../../assets/urls";
 import TakeAssessment from "./TakeAssessment";
 import PageLoading from "../../components/PageLoading/PageLoading";
+import validators from "../../models/validators";
 
 const TakeAssessmentContainer = (props) => {
 
@@ -20,11 +21,16 @@ const TakeAssessmentContainer = (props) => {
         error: null
     })
 
+
+    const [isValid, setIsValid] = useState({
+        name: false,
+        email: false
+    })
+
     const handleChangeSlider = (value, index) => {
         const temporalCategories = competences
         temporalCategories[index].value = value
         setCompetences(temporalCategories)
-        console.log(competences)
     }
 
     const handleChangeFormValue = (e) => {
@@ -32,6 +38,12 @@ const TakeAssessmentContainer = (props) => {
             ...basicData,
             [e.target.name]: e.target.value
         })
+        if(e.target.type === 'text'){
+            setIsValid({...isValid, name: validators.validateText(e.target.value)})
+            console.log(`validando texto ${e.target.value} ${validators.validateText(e.target.value)}`)
+        }else if(e.target.type === 'email'){
+            setIsValid({...isValid, email: validators.validateEmail(e.target.value)})
+        }
     }
 
     const getSendObject = () => {
@@ -70,9 +82,10 @@ const TakeAssessmentContainer = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        setPetitionStatus({loading: true, error: null})
-        //validate ? :
-        await sendData()
+        if(isValid.name && isValid.email){
+            setPetitionStatus({loading: true, error: null})
+            await sendData()
+        }
     }
 
     if(petitionStatus.loading){
@@ -85,7 +98,7 @@ const TakeAssessmentContainer = (props) => {
                 onSubmit={handleSubmit}
                 basicData={basicData}
                 categories={competences}
-                // status={petitionStatus}
+                isValid={isValid}
             />
         )
     }
