@@ -10,6 +10,7 @@ import TakeAssessmentContainer from "./pages/TakeAssestment/TakeAssessmentContai
 import AssessmentResult from "./pages/AssessmentResult/AssessmentResult";
 import HomeTrainerContainer from "./pages/TrainerPages/HomeTrainer/HomeTrainerContainer";
 import TrainerLogin from "./pages/TrainerPages/TrainerLogin/TrainerLogin";
+import PageError from "./pages/PageError/PageError";
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
                         <Route exact path={'/take-assessment'} component={TakeAssessmentContainer}/>
                         <Route exact path={'/results-assessment/:email'} component={AssessmentResult}/>
                         <Route exact path={'/trainer-home'} component={HomeTrainerContainer}/>
-                        {/*<Redirect to={'/home'}/>*/}
+                        <Route component={PageError} />
                         <Footer/>
                     </div>
                 </Switch>
