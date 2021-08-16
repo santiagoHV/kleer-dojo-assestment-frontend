@@ -20,10 +20,10 @@ function App() {
 
     return (
             <BrowserRouter className={'SPA'}>
+                <NavBar whiteTheme={whiteNav}/>
                 <Switch>
-                    <Route exact path="/login" component={TrainerLogin}/>
-                    <div className={'default-container'}>
-                        <NavBar whiteTheme={whiteNav}/>
+
+                        <Route exact path="/login" component={TrainerLogin}/>
                         <Route exact path={'/'} component={() => <Home
                                                                 onWhiteNav={handleWhiteNav}
                                                                 onRedNav={handleRedNav}
@@ -32,9 +32,10 @@ function App() {
                         <Route exact path={'/results-assessment/:email'} component={AssessmentResult}/>
                         <Route exact path={'/trainer-home'} component={HomeTrainerContainer}/>
                         <Route component={PageError} />
-                        <Footer/>
-                    </div>
+
+
                 </Switch>
+                <Footer/>
             </BrowserRouter>
     );
 }
