@@ -31,7 +31,7 @@ const Home = (props) => {
 
                         <h3>¡Bienvenid@ Agile Coach!</h3>
                         <p>
-                            Aquí te encontrarás con un auto-assessment que te permitirá reflexionar sobre las competencias planteadas en Kleer Dojo para un Agile Coach, basado en el agile competency framework de Lysa Adkins y los niveles de adquicisión de competencias de Ubert Dreyfus.
+                            Aquí te encontrarás con un auto-assessment que te permitirá reflexionar sobre las competencias planteadas en Kleer Dojo para un Agile Coach, basado en el agile competency framework de Lysa Adkins y los niveles de adquisición de competencias de Ubert Dreyfus.
                         </p>
                         <p>
                             Cuando estés listo embárcate oprimiento el botón.
