@@ -6,6 +6,11 @@
     padding: 5%;
 }
 
+.results h4{
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+}
+
 .results__container{
     width: 100%;
 }

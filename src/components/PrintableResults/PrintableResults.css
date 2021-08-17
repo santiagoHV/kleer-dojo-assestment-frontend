@@ -12,6 +12,10 @@
     font-size: 45px;
 }
 
+#results-results h4{
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+}
 
 .result__graphics{
     margin-top: 60px;

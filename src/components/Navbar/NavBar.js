@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import {Container, Nav, Navbar} from "react-bootstrap";
 import Logo from '../../assets/imgold/logo blanco ACP.png'
-import LogoRed from '../../assets/imgold/LOGO magenta.png'
+import LogoRed from '../../assets/img/KDJ logo magenta.png'
 import './NavBar.css'
 import {Link} from "react-router-dom";
 import {UserContext} from "../../context/UserContext";

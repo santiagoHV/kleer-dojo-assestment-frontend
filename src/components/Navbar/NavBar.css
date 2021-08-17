@@ -1,15 +1,15 @@
 .navbar{
     background-color: #D83D45 !important;
     font-family: 'Raleway', sans-serif !important;
-    height: 90px;
+    height: 85px;
 }
 
 .navbar-white{
     background-color: #ffffff !important;
     font-family: 'Raleway', sans-serif !important;
-    font-weight: bold;
+    /*font-weight: bold;*/
     color: #D83D45 !important;
-    height: 90px;
+    height: 85px;
     font-size: 20px;
     max-width: 100vw;
 }

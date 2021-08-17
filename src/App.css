@@ -44,6 +44,7 @@
 .my-btn-primary{
   background-color: #4579b2 !important;
   color: white !important;
+  font-family: 'Mali-SemiBold' !important;
 }
 
 .form-control:focus {
