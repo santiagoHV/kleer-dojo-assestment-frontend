@@ -19,7 +19,7 @@ const FormAssessment = (props) => {
                                 marks
                                 step={1}
                                 min={1}
-                                max={6}
+                                max={5}
                                 onChange={(e, data) => {props.onChange(data,index)}}
                             />
                             {/*<p>{levels.getLevel(item.value)}</p>*/}

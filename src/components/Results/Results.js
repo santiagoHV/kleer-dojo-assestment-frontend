@@ -45,6 +45,7 @@ const Results = (props) => {
     const progressBars = () => {
         return(
             <div className={'competence-container'}>
+
                 {results.map((item, index) => {
                     return (
                         <div className={'competence-container'}>
@@ -55,7 +56,7 @@ const Results = (props) => {
                                 {levels.getLevel(item)}
                             </p>
                             <ProgressBar
-                                now={item / 6 * 100}
+                                now={item / 5 * 100}
                                 animated={true}
                                 className={'progress-bar'}
                             />

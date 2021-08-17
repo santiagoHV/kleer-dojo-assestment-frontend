@@ -34,8 +34,8 @@ const RadarGraphic = (props) => {
                 },
                 yaxis: {
                     min: 0,
-                    max: 6,
-                    tickAmount: 6,
+                    max: 5,
+                    tickAmount: 5,
                     labels: {
                         style: {
                             colors: [],
