@@ -26,7 +26,7 @@ const RadarGraphic = (props) => {
                     categories: props.categories,
                     labels: {
                         style: {
-                            colors: ["#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
+                            colors: ["#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
                             fontSize: `${props.fontSize}px`,
                             fontFamily: 'Arial'
                         }
