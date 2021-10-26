@@ -5,7 +5,7 @@ import {URLS} from "../assets/urls";
 const BASE_URL = URLS.API
 
 function useFetchApi(endpoint='', isPrivate=false){
-    const { token, refreshToken } = useContext(UserContext);
+    const { token, refreshToken, deleteUserData } = useContext(UserContext);
     const [state, setState] = useState({
         data: null,
         loading: true,
@@ -22,16 +22,15 @@ function useFetchApi(endpoint='', isPrivate=false){
                 }
             });
 
+
             const data = await response.json()
 
             if(isPrivate && response.status === 401) {
                 await refreshToken()
-                return getData();
+                return getData()
             }else if(isPrivate && data.error === 'no credentials'){
-                await refreshToken()
-                return getData();
+               deleteUserData()
             }
-
 
 
             if(data.error){

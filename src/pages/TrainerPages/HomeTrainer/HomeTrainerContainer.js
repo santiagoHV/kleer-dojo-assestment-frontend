@@ -12,6 +12,7 @@ const HomeTrainerContainer = () => {
     const {isAuth} = useContext(UserContext)
 
     useEffect(() =>{
+        console.log('antes de entrar a get data')
         getData()
     }, [])
 
@@ -36,10 +37,14 @@ const HomeTrainerContainer = () => {
     }
 
     if(error){
+        if(error === 'no credentials'){
+            return <Redirect to={'/login'} />
+        }
         return error
     }
-
+    console.log(data)
     return (
+
         <HomeTrainer
             data={data}
             onDeleteAssessment={handleDeleteAssessment}

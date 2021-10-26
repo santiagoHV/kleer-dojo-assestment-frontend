@@ -10,7 +10,6 @@ function UserProvider({ children }) {
     const [token, setToken] = useState(() => {
         const local = localStorage.getItem('token')
 
-        console.log('en el hook tenemos el  ' + local)
         return local ? local : ''
 
     });
@@ -81,13 +80,17 @@ function UserProvider({ children }) {
                 console.log(token)
                 return token
             })
-            console.log(token + ' sera que si ome?')
-
-            console.log('el que esta en el storage ' + localStorage.getItem('token'))
-            console.log('token nuevo: ' + fetchData.token)
         }
-        console.log('token nuevo en el metodo de refresh ' + token)
 
+    }
+
+    function deleteUserData(){
+        console.log('borra el usuario')
+        localStorage.setItem('user', '')
+        localStorage.setItem('token', '')
+
+        setUser(localStorage.getItem('user'))
+        setToken(localStorage.getItem('token'))
     }
 
     return (
@@ -99,7 +102,8 @@ function UserProvider({ children }) {
                 token,
                 login,
                 logout,
-                refreshToken
+                refreshToken,
+                deleteUserData
             }}
         >
             {children}
