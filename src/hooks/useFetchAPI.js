@@ -22,14 +22,20 @@ function useFetchApi(endpoint='', isPrivate=false){
                 }
             });
 
+            const data = await response.json()
+
             if(isPrivate && response.status === 401) {
+                await refreshToken()
+                return getData();
+            }else if(isPrivate && data.error === 'no credentials'){
                 await refreshToken()
                 return getData();
             }
 
-            const data = await response.json()
+
 
             if(data.error){
+
                 setState({
                     data:null,
                     loading: false,
