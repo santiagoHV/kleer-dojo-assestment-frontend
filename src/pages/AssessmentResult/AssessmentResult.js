@@ -2,51 +2,46 @@ import React, {useEffect, useState} from "react";
 import {URLS} from '../../assets/urls'
 import Results from "../../components/Results/Results";
 import PageLoading from "../../components/PageLoading/PageLoading";
+import {useDispatch, useSelector} from "react-redux";
+import {toggleLoader} from "../../redux/actions/uiActions";
+import {getFirstAssessment} from "../../api/firstAssessmentConnector";
+import {setActualFirstAssessment} from "../../redux/actions/firstAssessmentActions";
 
 const AssessmentResult = (props) => {
+    const dispatch = useDispatch()
+    const loading = useSelector(state => state.ui.loading)
+    const data = useSelector(state => state.firstAssessment.assessment)
     const [email, setEmail] = useState(props.match.params.email)
-    const API = URLS
-    const [state, setState] = useState({
-        loading: true,
-        error: null,
-        data: null
-    })
-    const [data, setData] = useState({})
+
 
     useEffect(() => {
-        getAssessment()
+        dispatch(toggleLoader())
+        getFirstAssessment(email)
+            .then(res => {
+                dispatch(setActualFirstAssessment(res))
+                dispatch(toggleLoader())
+            })
+
+        // getAssessment()
     }, [])
 
-    const getAssessment = async () => {
-        console.log(`${URLS.API}/single-assessment/first-assessment/${email}`)
-        const response = await fetch(`${URLS.API}/single-assessment/first-assessment/${email}`)
-        const responseData = await response.json()
 
-
-        if (responseData.error) {
-            setState({error: responseData.error, loading: false, data: null})
-        } else {
-            setState({error: null, loading: false, data: responseData})
-        }
-    }
-
-
-    if (state.loading) {
+    if (loading) {
         return <PageLoading/>
     }
-    if (state.error) {
-        return state.error
+
+    // TODO: manejo de errores
+    if (false) {
+        return 'state.error'
     }
 
-    if (!state.loading) {
+    if (!loading) {
         return (
             <section>
                 <Results
-                    results={state.data}
+                    results={data}
                     email={email}
-                    goBack={() => {
-                    }}
-                />
+                    goBack={() => {}}/>
             </section>
         )
     }

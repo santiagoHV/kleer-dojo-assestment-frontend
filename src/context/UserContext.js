@@ -16,8 +16,12 @@ function UserProvider({ children }) {
     const [error, setError] = useState(null)
 
     const [user, setUser] = useState(() => {
-        const local = JSON.parse(localStorage.getItem('user'))
-        return local ? local : null
+        try {
+            const local = localStorage.getItem('user')
+            return local ? JSON.parse(local) : null
+        } catch (e) {
+            return null
+        }
     });
 
 
