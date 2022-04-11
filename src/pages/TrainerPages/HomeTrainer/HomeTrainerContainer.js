@@ -5,17 +5,22 @@ import HomeTrainer from "./HomeTrainer";
 import {UserContext} from "../../../context/UserContext";
 import {Redirect} from "react-router-dom";
 import {URLS} from "../../../assets/urls";
+import {useDispatch, useSelector} from "react-redux";
+import {getAllFirstAssessmentsAction} from "../../../redux/actions/firstAssessmentActions";
 
 const HomeTrainerContainer = () => {
+    const dispatch = useDispatch()
+    const isLogged = useSelector(state => state.auth.isLoggedIn);
+    const firstAssessmentList = useSelector(state => state.assessment.allFirstAssessments);
 
     const [{data, loading, error}, getData] = useFetchApi('/single-assessment/first-assessment', true)
     const {isAuth} = useContext(UserContext)
 
     useEffect(() =>{
-        console.log('antes de entrar a get data')
+        dispatch(getAllFirstAssessmentsAction())
         getData()
     }, [])
-
+    console.log(firstAssessmentList)
     const handleDeleteAssessment = async (email) => {
         const response = await fetch(`${URLS.API}/single-assessment/first-assessment?email=${email}`,{
             method: 'DELETE',
@@ -28,7 +33,7 @@ const HomeTrainerContainer = () => {
         getData()
     }
 
-    if(!isAuth){
+    if(!isLogged){
         return <Redirect to={'/login'} />
     }
 

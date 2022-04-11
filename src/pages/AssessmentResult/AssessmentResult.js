@@ -5,7 +5,7 @@ import PageLoading from "../../components/PageLoading/PageLoading";
 import {useDispatch, useSelector} from "react-redux";
 import {toggleLoader} from "../../redux/actions/uiActions";
 import {getFirstAssessment} from "../../api/firstAssessmentConnector";
-import {setActualFirstAssessment} from "../../redux/actions/firstAssessmentActions";
+import {setActualFirstAssessmentAction} from "../../redux/actions/firstAssessmentActions";
 
 const AssessmentResult = (props) => {
     const dispatch = useDispatch()
@@ -18,7 +18,7 @@ const AssessmentResult = (props) => {
         dispatch(toggleLoader())
         getFirstAssessment(email)
             .then(res => {
-                dispatch(setActualFirstAssessment(res))
+                dispatch(setActualFirstAssessmentAction(res))
                 dispatch(toggleLoader())
             })
 
