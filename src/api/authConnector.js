@@ -7,8 +7,11 @@ export const singUp = (user) => {
 }
 
 export const logIn = async (user) => {
+    console.log('entra a la accion', user)
+
     const response = await Axios.post(`${AUTH_URL}/login`, user)
-    return response.data
+    console.log(response)
+    return response
 }
 
 export const logOut = async (token) => {
@@ -16,6 +19,7 @@ export const logOut = async (token) => {
     return response
 }
 
-export const refreshToken = (user) => {
-    return Axios.get(`${AUTH_URL}/refresh-token?username=${user.username}`)
+export const refreshToken = async (user) => {
+    const response = await Axios.get(`${AUTH_URL}/refresh-token?username=${user.username}`)
+    return response
 }

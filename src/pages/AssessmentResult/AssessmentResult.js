@@ -11,11 +11,13 @@ const AssessmentResult = (props) => {
     const dispatch = useDispatch()
     const loading = useSelector(state => state.ui.loading)
     const data = useSelector(state => state.firstAssessment.assessment)
+    const token = useSelector(state => state.auth.token);
+
     const [email, setEmail] = useState(props.match.params.email)
 
 
     useEffect(() => {
-        dispatch(toggleLoader())
+        dispatch(toggleLoader(token))
         getFirstAssessment(email)
             .then(res => {
                 dispatch(setActualFirstAssessmentAction(res))

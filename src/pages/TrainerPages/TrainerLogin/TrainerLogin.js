@@ -5,11 +5,13 @@ import './TrainerLogin.css'
 import {Redirect} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {logInAction} from "../../../redux/actions/authActions";
+import {toggleLoader} from "../../../redux/actions/uiActions";
 
 const TrainerLogin = (props) => {
     ////redux implementation
     const dispatch = useDispatch()
     const isLogged = useSelector(state => state.auth.isLoggedIn)
+    const error = useSelector(state => state.ui.error)
 
     ////////////////
 
@@ -39,6 +41,8 @@ const TrainerLogin = (props) => {
     }
 
     if(isLogged){
+        console.log('redirecting')
+        dispatch(toggleLoader(false))
         return <Redirect to={'/trainer-home'}/>
     }else {
         return (
@@ -46,6 +50,7 @@ const TrainerLogin = (props) => {
                 <GenericLogin
                     onChange={handleChange}
                     onSubmit={handleSubmit}
+                    error={error}
                 />
                 {loginData.error ? loginData.error : ''}
             </section>

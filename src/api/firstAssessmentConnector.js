@@ -14,5 +14,18 @@ export const getAllFirstAssessments = async (token) => {
             }
         }
         );
+
+    return response
+};
+
+export const deleteFirstAssessment = async (email, token) => {
+    const response = await Axios.delete(
+        `/single-assessment/first-assessment?email=${email}`,
+        {
+                headers: {
+                    Authorization: `token ${token}`
+                }
+            }
+        );
     return response
 };

@@ -4,6 +4,7 @@ import './GenericLogin.css'
 
 
 const GenericLogin = (props) => {
+    console.log(props.error)
     return (
         <Container className={'login'}>
             <Form className={'login__form'} onSubmit={props.onSubmit}>
@@ -13,6 +14,7 @@ const GenericLogin = (props) => {
                     <Form.Control
                         name={'username'}
                         onChange={props.onChange}
+                        isInvalid={props.error}
                     />
                 </Form.Group>
                 <Form.Group>
@@ -21,6 +23,7 @@ const GenericLogin = (props) => {
                         name={'password'}
                         type={'password'}
                         onChange={props.onChange}
+                        isInvalid={props.error}
                     />
                 </Form.Group>
                 <button className={'btn my-btn-primary'}>

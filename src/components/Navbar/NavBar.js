@@ -7,9 +7,18 @@ import {Link} from "react-router-dom";
 import {UserContext} from "../../context/UserContext";
 import ModalSearchAssessment from "../../pages/ModalSearchAssessment/ModalSearchAssessment";
 import {useHistory} from 'react-router-dom'
+import {useDispatch, useSelector} from "react-redux";
+import {logOutAction} from "../../redux/actions/authActions";
 
 const NavBar = (props) => {
-    const {isAuth, userData, logout, token} = useContext(UserContext)
+    //redux implementation
+    const isLogged = useSelector(state => state.auth.isLoggedIn);
+    const user = useSelector(state => state.auth.user);
+    const token = useSelector(state => state.auth.token);
+    const dispatch = useDispatch()
+
+    ///
+    // const {isAuth, userData, logout, token} = useContext(UserContext)
     const history = useHistory()
     const [showNav, setShowNav] = useState(false)
     const [email, setEmail] = useState('')
@@ -19,12 +28,20 @@ const NavBar = (props) => {
 
 
     const handleCloseNav = () => setShowNav(false)
+
     const handleSubmit = () => {
         history.push(`/results-assessment/${email}`)
         setShowNav(false)
     }
+
     const handleChangeModal = (e) => {
         setEmail(e.target.value)
+    }
+
+    const handleLogout = () => {
+        console.log('token ' + token)
+        dispatch(logOutAction(token))
+        history.push('/')
     }
 
 
@@ -54,11 +71,11 @@ const NavBar = (props) => {
                     </Nav>
                     <Nav>
                         {
-                            !isAuth ? <Nav.Link className={`nav-link ${props.whiteTheme ? 'navbar--text' : ''}`} onClick={() => {setShowNav(true)}}>¿Ya presentaste tu assessment?</Nav.Link> : ''
+                            !isLogged ? <Nav.Link className={`nav-link ${props.whiteTheme ? 'navbar--text' : ''}`} onClick={() => {setShowNav(true)}}>¿Ya presentaste tu assessment?</Nav.Link> : ''
                         }
-                        <Link className={`nav-link ${props.whiteTheme ? 'navbar--text' : ''}`} to={'/trainer-home'}>{isAuth ? userData.name : '¿Eres Trainer?'}</Link>
+                        <Link className={`nav-link ${props.whiteTheme ? 'navbar--text' : ''}`} to={'/trainer-home'}>{isLogged ? user.name : '¿Eres Trainer?'}</Link>
                         {
-                            isAuth ? <p className={`nav-link ${props.whiteTheme ? 'navbar--text' : ''}`} onClick={logout}>
+                            isLogged ? <p className={`nav-link ${props.whiteTheme ? 'navbar--text' : ''}`} onClick={handleLogout}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                      className="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd"

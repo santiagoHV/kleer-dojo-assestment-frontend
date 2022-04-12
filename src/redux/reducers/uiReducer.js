@@ -10,7 +10,7 @@ const uiReducer = (state = initialState, action) => {
         case SET_ERROR:
             return {
                 ...state,
-                error: action.error
+                error: action.payload
             }
         case CLEAN_ERROR:
             return {
@@ -20,7 +20,7 @@ const uiReducer = (state = initialState, action) => {
         case TOGGLE_LOADER:
             return {
                 ...state,
-                loading: !state.loading
+                loading: action.payload
             }
         default:
             return {...state}

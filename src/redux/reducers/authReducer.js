@@ -1,10 +1,12 @@
-import {LOG_IN_FAIL, LOG_IN_SUCCESS} from "../actions/types";
+import {LOG_IN_FAIL, LOG_IN_SUCCESS, LOG_OUT, REFRESH_TOKEN} from "../actions/types";
 
 const user = JSON.parse(localStorage.getItem('user'))
+const token = localStorage.getItem('token')
+
 const initialState = {
     isLoggedIn: user ? true : false,
-    user: null,
-    token: null
+    user: user ? (user) : null,
+    token: token ? token : null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -17,11 +19,24 @@ const authReducer = (state = initialState, action) => {
                 token: action.payload.token
             }
         case LOG_IN_FAIL:
+            console.log('action.payload')
             return {
                 ...state,
                 isLoggedIn: false,
                 user: null,
                 token: null
+            }
+        case LOG_OUT:
+            return {
+                ...state,
+                isLoggedIn: false,
+                user: null,
+                token: null
+            }
+        case REFRESH_TOKEN:
+            return {
+                ...state,
+                token: action.token
             }
         default:
             return {...state}

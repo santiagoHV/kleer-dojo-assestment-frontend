@@ -1,25 +1,48 @@
 import Axios from "../../api/config";
-import {LOG_IN_FAIL, LOG_IN_SUCCESS, LOG_OUT_FAIL, LOG_OUT_SUCCESS, SET_ERROR, SIGN_UP} from "./types";
-import {logIn, logOut} from "../../api/authConnector";
+import {
+    LOG_IN_FAIL,
+    LOG_IN_SUCCESS,
+    LOG_OUT,
+    LOG_OUT_FAIL,
+    LOG_OUT_SUCCESS,
+    REFRESH_TOKEN,
+    SET_ERROR,
+    SIGN_UP
+} from "./types";
+import {logIn, logOut, refreshToken} from "../../api/authConnector";
+import {toast} from "react-toastify";
 
 export const logInAction = user =>{
-    //cuidado con el async await
     return dispatch => {
         logIn(user)
             .then(logInResponse => {
-                console.log(logInResponse)
+                console.log(logInResponse);
                 if(logInResponse.error){
+                    toast.error(logInResponse.error,{
+                        position: toast.POSITION.BOTTOM_CENTER
+                    })
                     return {
                         type: LOG_IN_FAIL,
                         payload: 'no hay login'
                     }
                 }
+
                 localStorage.setItem("token", logInResponse.token)
+                localStorage.setItem("user", JSON.stringify(logInResponse.user))
 
                 dispatch({
                     type: LOG_IN_SUCCESS,
-                    payload: logInResponse
+                    payload: logInResponse.data
                 })
+            }).catch(error => {
+                toast.error(error.response.data.error,{
+                    position: toast.POSITION.BOTTOM_CENTER
+                })
+                dispatch({
+                    type: SET_ERROR,
+                    payload: error.response.data.error
+                })
+
             })
     }
 }
@@ -30,16 +53,26 @@ export const logOutAction = (token) => {
             .then(logOutResponse => {
                 if(logOutResponse.error){
                     return {
-                        type: LOG_OUT_FAIL,
+                        type: SET_ERROR,
                         payload: 'no hay logout'
                     }
                 }
-                localStorage.removeItem("tokenRedux")
+                localStorage.removeItem("token")
+                localStorage.removeItem("user")
+
                 dispatch({
-                    type: LOG_OUT_SUCCESS,
+                    type: LOG_OUT,
                     payload: logOutResponse
                 })
             })
+    }
+}
+
+export const refreshTokenAction = token => {
+    localStorage.setItem("token", token)
+    return {
+        type: REFRESH_TOKEN,
+        payload: token
     }
 }
 
