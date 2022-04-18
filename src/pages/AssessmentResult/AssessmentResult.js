@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {URLS} from '../../assets/urls'
 import Results from "../../components/Results/Results";
 import PageLoading from "../../components/PageLoading/PageLoading";
 import {useDispatch, useSelector} from "react-redux";
@@ -20,7 +19,7 @@ const AssessmentResult = (props) => {
         dispatch(toggleLoader(token))
         getFirstAssessment(email)
             .then(res => {
-                dispatch(setActualFirstAssessmentAction(res))
+                dispatch(setActualFirstAssessmentAction(res.data))
                 dispatch(toggleLoader())
             })
 
@@ -38,6 +37,7 @@ const AssessmentResult = (props) => {
     }
 
     if (!loading) {
+        console.log('data',data)
         return (
             <section>
                 <Results

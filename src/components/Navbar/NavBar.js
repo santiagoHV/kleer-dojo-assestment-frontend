@@ -11,21 +11,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {logOutAction} from "../../redux/actions/authActions";
 
 const NavBar = (props) => {
-    //redux implementation
     const isLogged = useSelector(state => state.auth.isLoggedIn);
     const user = useSelector(state => state.auth.user);
     const token = useSelector(state => state.auth.token);
     const dispatch = useDispatch()
-
-    ///
-    // const {isAuth, userData, logout, token} = useContext(UserContext)
     const history = useHistory()
     const [showNav, setShowNav] = useState(false)
     const [email, setEmail] = useState('')
-
-    // console.log('auth ' + isAuth)
-    // console.log('token ' + token)
-
 
     const handleCloseNav = () => setShowNav(false)
 

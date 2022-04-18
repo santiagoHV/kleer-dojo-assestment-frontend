@@ -1,4 +1,4 @@
-import {CLEAN_ERROR, SET_ERROR, TOGGLE_LOADER} from "../actions/types";
+import { CLEAN_ERROR, SET_ERROR, TOGGLE_LOADER } from "../actions/types";
 
 const initialState = {
     error: null,
@@ -6,7 +6,7 @@ const initialState = {
 }
 
 const uiReducer = (state = initialState, action) => {
-    switch(action.type){
+    switch (action.type) {
         case SET_ERROR:
             return {
                 ...state,
@@ -23,7 +23,7 @@ const uiReducer = (state = initialState, action) => {
                 loading: action.payload
             }
         default:
-            return {...state}
+            return {...state }
     }
 }
 

@@ -6,6 +6,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAllFirstAssessmentsAction} from "../../../redux/actions/firstAssessmentActions";
 import {setError, toggleLoader} from "../../../redux/actions/uiActions";
 import {getAllFirstAssessments, deleteFirstAssessment} from "../../../api/firstAssessmentConnector";
+import { toast } from "react-toastify";
+import {errorTranslator} from "../../../utils/errorTranslator";
 
 const HomeTrainerContainer = () => {
     const dispatch = useDispatch()
@@ -61,11 +63,13 @@ const HomeTrainerContainer = () => {
 
     if(error){
         if(error === 'no credentials'){
+            toast.error(errorTranslator(error).error,{
+                position: toast.POSITION.BOTTOM_CENTER
+            })
             return <Redirect to={'/login'} />
         }
         return error
     }
-    console.log(firstAssessmentList)
     return (
 
         <HomeTrainer
