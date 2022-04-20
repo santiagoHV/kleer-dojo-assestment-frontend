@@ -1,6 +1,8 @@
 export const errorTranslator = error => {
     switch (error) {
         case 'no credentials':
-            return 'Tiempo de sesión expirado, inicia sesión nuevamente';
+            return 'Inicia sesión para continuar';
+        case 'expired token':
+            return 'Sesión refrescada';
     }
 }

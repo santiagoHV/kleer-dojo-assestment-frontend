@@ -20,6 +20,7 @@ export const logOut = async (token) => {
 }
 
 export const refreshToken = async (user) => {
+    console.log('user',user)
     const response = await Axios.get(`${AUTH_URL}/refresh-token?username=${user.username}`)
     return response
 }

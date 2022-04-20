@@ -65,7 +65,7 @@ const NavBar = (props) => {
                         {
                             !isLogged ? <Nav.Link className={`nav-link ${props.whiteTheme ? 'navbar--text' : ''}`} onClick={() => {setShowNav(true)}}>¿Ya presentaste tu assessment?</Nav.Link> : ''
                         }
-                        <Link className={`nav-link ${props.whiteTheme ? 'navbar--text' : ''}`} to={'/trainer-home'}>{isLogged ? user.name : '¿Eres Trainer?'}</Link>
+                        <Link className={`nav-link ${props.whiteTheme ? 'navbar--text' : ''}`} to={'/login'}>{isLogged ? user.name : '¿Eres Trainer?'}</Link>
                         {
                             isLogged ? <p className={`nav-link ${props.whiteTheme ? 'navbar--text' : ''}`} onClick={handleLogout}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"

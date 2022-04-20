@@ -1,11 +1,11 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import {UserContext} from "../../../context/UserContext";
 import GenericLogin from "../../../components/GenericLogin/GenericLogin";
 import './TrainerLogin.css'
 import {Redirect} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {logInAction} from "../../../redux/actions/authActions";
-import {toggleLoader} from "../../../redux/actions/uiActions";
+import {cleanError, toggleLoader} from "../../../redux/actions/uiActions";
 
 const TrainerLogin = (props) => {
     ////redux implementation
@@ -23,9 +23,14 @@ const TrainerLogin = (props) => {
         password: ''
     })
 
+    useEffect(() => {
+        dispatch(cleanError())
+    })
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        dispatch(cleanError())
         dispatch(logInAction(data))
 
         // setLoginData(await login(data))
@@ -41,7 +46,6 @@ const TrainerLogin = (props) => {
     }
 
     if(isLogged){
-        console.log('redirecting')
         dispatch(toggleLoader(false))
         return <Redirect to={'/trainer-home'}/>
     }else {
@@ -52,7 +56,6 @@ const TrainerLogin = (props) => {
                     onSubmit={handleSubmit}
                     error={error}
                 />
-                {loginData.error ? loginData.error : ''}
             </section>
         )
     }

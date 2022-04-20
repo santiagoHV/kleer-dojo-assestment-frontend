@@ -8,6 +8,7 @@ const initialState = {
 const uiReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_ERROR:
+            console.log('reducer', action)
             return {
                 ...state,
                 error: action.payload

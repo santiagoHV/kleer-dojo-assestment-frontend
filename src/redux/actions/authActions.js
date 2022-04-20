@@ -3,11 +3,8 @@ import {
     LOG_IN_FAIL,
     LOG_IN_SUCCESS,
     LOG_OUT,
-    LOG_OUT_FAIL,
-    LOG_OUT_SUCCESS,
-    REFRESH_TOKEN,
+    REFRESH_TOKEN, RESTART_CREDENTIALS,
     SET_ERROR,
-    SIGN_UP
 } from "./types";
 import {logIn, logOut, refreshToken} from "../../api/authConnector";
 import {toast} from "react-toastify";
@@ -16,7 +13,7 @@ export const logInAction = user =>{
     return dispatch => {
         logIn(user)
             .then(logInResponse => {
-                console.log(logInResponse);
+                console.log('loginresponse',logInResponse);
                 if(logInResponse.error){
                     toast.error(logInResponse.error,{
                         position: toast.POSITION.BOTTOM_CENTER
@@ -27,8 +24,8 @@ export const logInAction = user =>{
                     }
                 }
 
-                localStorage.setItem("token", logInResponse.token)
-                localStorage.setItem("user", JSON.stringify(logInResponse.user))
+                localStorage.setItem("token", logInResponse.data.token)
+                localStorage.setItem("user", JSON.stringify(logInResponse.data.user))
 
                 dispatch({
                     type: LOG_IN_SUCCESS,
@@ -73,6 +70,15 @@ export const refreshTokenAction = token => {
     return {
         type: REFRESH_TOKEN,
         payload: token
+    }
+}
+
+export const restartCredentialsAction = () => {
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    return {
+        type: RESTART_CREDENTIALS,
+        payload: ''
     }
 }
 

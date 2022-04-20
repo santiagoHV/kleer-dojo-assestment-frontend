@@ -1,8 +1,8 @@
 import {CLEAN_ERROR, SET_ERROR, TOGGLE_LOADER} from "./types";
 
-export const setError = error => ({
+export const setError = payload => ({
     type: SET_ERROR,
-    error
+    payload
 })
 
 export const cleanError = () => ({
