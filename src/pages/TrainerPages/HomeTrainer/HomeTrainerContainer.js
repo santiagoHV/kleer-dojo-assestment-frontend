@@ -55,18 +55,29 @@ const HomeTrainerContainer = () => {
     }
 
     const handleDeleteAssessment = async (email) => {
-        //poner confirmacion
         dispatch(toggleLoader(true))
-        deleteFirstAssessment(email, token).then(res => {
-            if(res.error){
-                dispatch(setError(res.error))
+        deleteFirstAssessment(email, token)
+            .then(res => {
                 dispatch(toggleLoader(false))
+                getData()
+            })
+            .catch((error) => {
+                dispatch(setError(error.response.data.error))
+                dispatch(toggleLoader(false))
+                if(error.response.status === 401){
+                    toast('Tiempo de inactividad excedido, intentelo de nuevo por favor',
+                        {
+                            type: 'info',
+                            position: toast.POSITION.BOTTOM_RIGHT,
+                        })
+                }else{
+                    toast(error.response.data.error,
+                        {type: "error" ,
+                            position: toast.POSITION.TOP_CENTER
+                        })
+                }
+            })
 
-            }else{
-                dispatch(toggleLoader(false))
-            }
-        })
-        getData()
     }
 
     if(!isLogged){
