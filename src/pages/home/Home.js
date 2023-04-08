@@ -4,11 +4,16 @@ import {Col, Container, Image, Row} from "react-bootstrap";
 import './Home.css'
 import SELLO from '../../assets/img/Agile Coach Practitioner.png'
 import WOMAN from '../../assets/img/assessment.png'
+import {useDispatch} from "react-redux";
+import {toggleLoader} from "../../redux/actions/uiActions";
 
 const Home = (props) => {
+    const dispatch = useDispatch()
 
     useEffect(()=>{
+        dispatch(toggleLoader(false))
         props.onWhiteNav()
+
         return () => {
             props.onRedNav()
         }

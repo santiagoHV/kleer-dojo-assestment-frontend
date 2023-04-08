@@ -77,7 +77,7 @@ const Results = (props) => {
                         Agile Coach Competency Framework Assessment
                     </h1>
                     <h4 className={'results__name'}>
-                        {name.toUpperCase()}
+                        {name && name.toUpperCase()}
                     </h4>
                     <div className={'results__graphics'}>
                         <RadarGraphic

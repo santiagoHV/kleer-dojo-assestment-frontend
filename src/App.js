@@ -2,6 +2,7 @@ import './App.css';
 import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
+import "react-toastify/dist/ReactToastify.css";
 import {BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
 import NavBar from "./components/Navbar/NavBar";
 import Footer from "./components/Footer/Footer";
@@ -11,6 +12,7 @@ import AssessmentResult from "./pages/AssessmentResult/AssessmentResult";
 import HomeTrainerContainer from "./pages/TrainerPages/HomeTrainer/HomeTrainerContainer";
 import TrainerLogin from "./pages/TrainerPages/TrainerLogin/TrainerLogin";
 import PageError from "./pages/PageError/PageError";
+import {ToastContainer} from "react-toastify";
 
 function App() {
 
@@ -35,6 +37,7 @@ function App() {
 
 
                 </Switch>
+                <ToastContainer autoClose={2000}/>
                 <Footer/>
             </BrowserRouter>
     );

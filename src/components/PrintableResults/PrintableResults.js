@@ -6,14 +6,14 @@ import Logo from '../../assets/imgold/LOGO magenta.png'
 const PrintableResults = (props) => {
 
     const contenido = props.results
-    console.log(contenido)
+
     return(
         <>
             <div id={'printable-results'}>
                 <h1>
                     Agile Coach Competency Framework Assessment
                 </h1>
-                <h4>{props.name.toUpperCase()}</h4>
+                <h4>{props.name && props.name.toUpperCase()}</h4>
                 <div className={'result__graphics'}>
                     <RadarGraphic
                         series={props.results}
