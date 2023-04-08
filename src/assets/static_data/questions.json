@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Lean-Agile",
+    "scale": [
+      "Tengo conocimientos basado en lecturas o libros. Asistí a un taller de Scrum o Kanban. Me certifiqué como CSM.",
+      "Fui parte de un equipo ágil. He trabajado bajo un framework ágil por lo menos un año. Facilité esporádicamente sesiones de equipos ágiles.",
+      "Puedo darle soporte a uno o más equipos ágiles. Puedo identificar la mejor técnica para usar en cada contexto. Participo de comunidades de práctica. He participado de múltiples equipos en escala.",
+      "Me desenvuelvo más por principios que por prácticas. Puedo trabajar con diferentes equipos, situaciones, topologías e industrias. Soy capaz de combinar diferentes estrategias de escalado. ",
+      "Soy capaz de ayudar a cualquier equipo en cualquier estadío. Mis decisiones están más basada en la intuición y la experiencia. Soy creador de técnicas."
+    ]
+  },
+  {
+    "title": "Entrenador",
+    "scale": [
+      "Tengo conocimientos sólidos en mi especialidad. He enseñado de manera informal. No tengo conocimientos de técnicas de enseñanza.",
+      "He dictado alguna clase o seminario. He sido tutor o asistente de training. Conozco técnicas como: PBL, POL, Método de Caso.",
+      "He realizado capacitaciones de marcos ágiles con buen feedback. Utilizo Training From the Back, PBL, PBL o Método de Caso. He leído sobre pedagogía.",
+      "Tengo la capacidad de crear contenido customizado basado en las necesidades del equipo y enseñarlos en workshops adaptados. Senso continuamente el espacio de aprendizaje. Enseño a enseñar.",
+      "Puedo co-crear las clases con los alumnos. Tengo alta capacidad de improvisación. Creo modelos de enseñanza."
+    ]
+  },
+  {
+    "title": "Mentor",
+    "scale": [
+      "Tengo conocimientos sólidos en mi especialidad. Sé distinguir qué es y no es mentorear. Fui mentoreado. Hicer shadow a un mentor. Conozco técnicas de mentoring.",
+      "He hecho mentoring alguna vez. He aplicado alguna técnica de mentoring. Soy capaz de identificar patrones basados en la observación.",
+      "Diseño y combino técnicas de mentoring. Compruebo qué funciona y qué no. Elijo el ejemplo justo en función de la problemática del mentee. Adecúo mi estrategia basado en el estilo de aprendizaje del mentee.",
+      "Tengo la capacidad de traer ejemplos metafóricos de otros contextos. Ejecuto el mentoring de forma más exploratoria. Enseño como como mentorear.",
+      "Hago mentoring a “detractores”. Creo frameworks de mentoring. Tengo la habilidad de cultivar otros mentores y mentorearlos."
+    ]
+  },
+  {
+    "title": "Facilitador",
+    "scale": [
+      "Conozco dinámicas simples (icebreakers). Puedo ser guardían del tiempo o guardían del propósito en una reunión.",
+      "Puedo facilitar las reuniones usuales de mis equipos. Mi capacidad de facilitación es reducida (ej: 10px). Puedo sostener un diseño de facilitación previamente elaborado.",
+      "Tengo conocimientos de dinámicas más complejas. Diseño actividades de facilitación. Puedo facilitar conversaciones difíciles. Tengo conocimiento de Story Telling y Visual Thinking. Mi capacidad de facilitación es moderada (ej:40px)",
+      "Puedo facilitar sesiones en temas desafiantes. Mi capacidad de facilitación es alta (ej:100px+). Puedo tomar lo emergente y adaptarme en tiempo real.",
+      "Facilito conflictos sociales. Tengo la habilidad de abordar la mayoría de disfuncionalidades en la sala de cualquier grupo. Facilito a facilitadores."
+    ]
+  },
+  {
+    "title": "Coach",
+    "scale": [
+      "Hice una formación pero he tenido poca práctica.",
+      "Estoy muy pendiente de la estructura del coaching. Tengo expectativas propias de la sesión. Escucho para validar lo que sé. Tengo menos de 100 horas de coaching.",
+      "Tengo la capacidad de escuchar en más de un nivel. Hago preguntas poderosas y utilizo metáforas. Tengo la capacidad de identificar un quiebre. Tengo menos de 500 horas de coaching.",
+      "Confío en mi intuición. No tengo expectativas, no tengo que demostrar nada. Escucho inmerso en lo que me está diciendo el cliente. Mi coachee habla bastante, yo mucho menos. Tengo menos de 2500 horas de coaching.",
+      "Soy un líder reconocido del movimiento del coaching."
+    ]
+  },
+  {
+    "title": "Maestría Técnica",
+    "scale": [
+      "Tengo conocimientos teóricos sobre los principios/prácticas de: XP, Agile Testing, DevOps, Software Craftsmanship y Clean Code. Conozco sobre las actividades del ciclo de vida de desarrollo de software. Tengo conocimiento teórico sobre arquitectura e infraestructura moderna.",
+      "He participado de equipos que realizan algunos principios y prácticas. Entiendo los beneficios de los principios/prácticas y cómo aportan al negocio. He recibido mentoría sobre el tema o llevado algún workshop.",
+      "Ayudo a equipos a adoptar principios/prácticas. Conozco cómo configurar herramientas que habilitan cierta prácticas. Conozco un conjunto más amplio de elemento alrededor de los diferentes marco de trabajo.",
+      "Puedo evaluar un equipo para encontrar problemas y oportunidades. Uso métricas para evaluar el impacto de las iniciativas.",
+      "Experimento continuamente para generar nuevo conocimiento. Ayudo a la organización y a la industria a mejorar sistemáticamente desde el ámbito técnico."
+    ]
+  },
+  {
+    "title": "Maestría Transformacional",
+    "scale": [
+      "He leído sobre teoría de sistemas y teoría de cambios. Conozco conceptos como Cynefin, Teoría U, Spiral Dynamics, etc. Tengo la capacidad de coordinar.",
+      "He trabajado con algún framework de transformación. Tengo la capacidad de escuchar activamente. He trabajado con algún framework de liderazgo.",
+      "Tengo la capacidad de capturar disfuncionalidades dentro de un equipo y trabajar en la organización para habilitar transformaciones en el equipo. He logrado hacer cambios a nivel de equipo.",
+      "Intervengo en el liderazgo de la organización. Tengo la capacidad de capturar disfuncionalidades a nivel organizacional y habilitar un cambio con impacto. Lidero procesos de cambio organizacional.",
+      "Vivo al borde del despido. Tengo la capacidad de articular disfunciones a alto nivel y generar la estrategia correcta para la transformación."
+    ]
+  },
+  {
+    "title": "Maestría de Negocios",
+    "scale": [
+      "Conozco aspectos básicos de desarrollo de negocios y productos.",
+      "He participado de un equipo de producto. Conozco sobre UX, Research, Customer development. Entiendo información estadística para tomar decisiones.",
+      "Sé integrar diferente marcos: HCD, Lean Thinking, Product Discovery, Lean Startup. He acompañado a equipos dual-track o end-to-end. He implementado feedback loops de producto. Incorporo conceptos de OKRs e métricas integrales.",
+      "Participo en la creación de estrategias de productos. Puedo enseñar las prácticas comunes de gestión de productos. Desarrollé varios productos exitosos.",
+      "Innovo modelos de negocios en los 3 horizontes de tiempo."
+    ]
+  }
+]
