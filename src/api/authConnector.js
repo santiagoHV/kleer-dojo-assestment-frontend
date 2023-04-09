@@ -7,10 +7,7 @@ export const singUp = (user) => {
 }
 
 export const logIn = async (user) => {
-    console.log('entra a la accion', user)
-
     const response = await Axios.post(`${AUTH_URL}/login`, user)
-    console.log(response)
     return response
 }
 

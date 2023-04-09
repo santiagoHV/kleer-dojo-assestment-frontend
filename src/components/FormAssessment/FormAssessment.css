@@ -43,8 +43,10 @@
 }
 
 .sliders-container{
+    background-color: rgba(69, 121, 178, 0.4);
     width: 80%;
-    max-width: 500px;
+    border-radius: 30px;
+    padding: 30px;
 }
 
 

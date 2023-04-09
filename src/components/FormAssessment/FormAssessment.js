@@ -3,6 +3,8 @@ import {Col, Form, Row} from "react-bootstrap";
 import PrettoSlider from "../SliderCustom/SliderCustom";
 import './FormAssessment.css'
 import levels from "../../models/levels";
+import dreyfusQuestions from "../../assets/static_data/questions.json"
+import DreyfusSkillScale from "../DreyfusSkillScale/DreyfusSkillScale";
 
 const FormAssessment = (props) => {
 
@@ -60,11 +62,24 @@ const FormAssessment = (props) => {
                         </Form.Group>
                     </div>
                 </Col>
-                <Col sm={6} className={'center-container'}>
+                <Col sm={6}>
                     <div className={'sliders-container'}>
-                        {sliders()}
-                        <div className={'space-btn'}>
-                            <button className={'btn my-btn-primary form--btn'}>Enviar</button>
+                        {
+                            //sliders()
+                        }
+                        <DreyfusSkillScale
+                            onChange={props.onChange}
+                            scale={dreyfusQuestions[props.actualQuestion].scale}
+                            name={dreyfusQuestions[props.actualQuestion].title}
+                            index={props.actualQuestion}/>
+                        <div className={'mt-5 space-btn'}>
+                            <button className={'btn my-btn-primary form--btn'}>
+                                {
+                                    props.actualQuestion < dreyfusQuestions.length - 1 ?
+                                        'Siguiente habilidad' :
+                                        'Enviar'
+                                }
+                            </button>
                         </div>
                     </div>
 
