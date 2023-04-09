@@ -29,3 +29,16 @@ export const deleteFirstAssessment = async (email, token) => {
         );
     return response
 };
+
+export const sendFirstAssessment = async (data) => {
+    const response = await Axios.post(
+        '/single-assessment/first-assessment-new',
+        data,
+        {
+            headers:{
+                "Content-Type": 'application/json'
+            },
+        }
+    )
+    return response
+}

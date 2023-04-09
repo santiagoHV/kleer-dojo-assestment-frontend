@@ -1,0 +1,19 @@
+.DreyfusScale{
+    height: 500px;
+    margin-top: 30px ;
+}
+
+.MuiSlider-markLabel{
+    margin-left: 20px;
+    white-space: normal !important;
+    width: 30vw
+}
+
+.MuiSlider-root.MuiSlider-vertical{
+    margin-top: 20px;
+    height: 80% !important;
+
+}
+.MuiSlider-vertical .MuiSlider-thumb{
+    margin-left: -11px !important;
+}
