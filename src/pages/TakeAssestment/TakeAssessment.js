@@ -9,7 +9,7 @@ const TakeAssessment = (props) => {
         <section id={'take-assessment'}>
             <Container className={'form-container'}>
                 <Row className={'form-container-row'}>
-                    <Col sm={12}>
+                    <Col sm={6}>
                         <FormAssessment
                             categories={props.categories}
                             name={props.basicData.name}
@@ -21,7 +21,7 @@ const TakeAssessment = (props) => {
                             actualQuestion={props.actualQuestion}
                         />
                     </Col>
-                    {/*<Col sm={3}>
+                    <Col sm={3}>
                         <div className={'img-container'}>
                             <img
                                 src={GIRL}
@@ -30,7 +30,7 @@ const TakeAssessment = (props) => {
                             />
                         </div>
 
-                    </Col>*/}
+                    </Col>
                 </Row>
 
             </Container>

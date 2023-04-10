@@ -3,6 +3,7 @@ import {data} from "../../assets/data";
 
 
 const initialState = {
+    success: false,
     actualQuestion: -1,
     name: '',
     email: '',
@@ -43,6 +44,15 @@ const takeAssessmentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 actualQuestion: -1
+            }
+        case 'REGISTER_SUCCESS':
+            return{
+                ...state,
+                success: true
+            }
+        case 'RESTART_FORM':
+            return{
+                ...initialState
             }
         default:
             return {...state}

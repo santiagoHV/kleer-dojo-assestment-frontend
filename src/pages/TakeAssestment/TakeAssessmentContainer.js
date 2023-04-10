@@ -15,6 +15,8 @@ import {
     setSkill
 } from "../../redux/actions/takeAssessmentActions";
 import {toast} from "react-toastify";
+import {toggleLoader} from "../../redux/actions/uiActions";
+import {Redirect, useHistory} from "react-router-dom";
 
 
 const TakeAssessmentContainer = (props) => {
@@ -28,6 +30,9 @@ const TakeAssessmentContainer = (props) => {
     const name = useSelector(state => state.takeAssessment.name)
     const email = useSelector(state => state.takeAssessment.email)
     const actualQuestion = useSelector(state => state.takeAssessment.actualQuestion)
+    const success = useSelector(state => state.takeAssessment.success)
+
+    const history = useHistory()
 
     useEffect(() => {
         dispatch(restartActualQuestion())
@@ -108,22 +113,22 @@ const TakeAssessmentContainer = (props) => {
         // }catch (error){
         //     setPetitionStatus({loading: false, error: error})
         // }
-
+        dispatch(toggleLoader(true))
         dispatch(sendFirstAssessmentAction({
             ...skills,
             name: name,
             email: email
         }))
+        if(success){
+            history.push(`/results-assessment/${email}`)
+        }
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        console.log(actualQuestion)
         if(actualQuestion < (dreyfusQuestions.length - 1) && actualQuestion >= 0){
-            console.log('entra por aca')
             dispatch(incrementActualQuestion())
-            console.log(actualQuestion)
 
         }else if(actualQuestion < 0){
             if(isValid.name && isValid.email){
@@ -142,8 +147,10 @@ const TakeAssessmentContainer = (props) => {
 
     }
 
-    if(petitionStatus.loading){
-        return <PageLoading />
+    if(loading && !success) {
+        return <PageLoading/>
+    }else if(success){
+        return <Redirect to={`/results-assessment/${email}`}/>
     }else{
         return (
             <TakeAssessment

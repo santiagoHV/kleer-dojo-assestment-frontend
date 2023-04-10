@@ -38,78 +38,59 @@ const FormAssessment = (props) => {
     return(
         <Form onSubmit={props.onSubmit} className={'form'}>
             <Row>
-                <Col sm={12} md={6}
+                <Col sm={12} md={12}
                      className={'form__basic-data'}
                 >
                     <h2>¡Aquí inicia tu camino!</h2>
                     <div className={'basic-data__form-group'}>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Nombre Completo</Form.Label>
-                            <Form.Control
-                                type={'text'}
-                                placeholder={'Ingresa tu nombre completo'}
-                                onChange={props.onChangeFormValue}
-                                name={'name'}
-                                className={props.isValid.name ? '' : 'form-error-control'}
-                            />
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control
-                                type={'email'}
-                                placeholder={'Ingresa tu email'}
-                                onChange={props.onChangeFormValue}
-                                name={'email'}
-                                className={props.isValid.email ? '' :'form-error-control'}
-                            />
-                        </Form.Group>
+                        <div className={'sliders-container'}>
+                            { actualQuestion < 0 ?
+                                <div className={'basic-data__form-group'}>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Nombre Completo</Form.Label>
+                                        <Form.Control
+                                            type={'text'}
+                                            placeholder={'Ingresa tu nombre completo'}
+                                            onChange={props.onChangeFormValue}
+                                            name={'name'}
+                                            className={props.isValid.name ? '' : 'form-error-control'}
+                                        />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Email</Form.Label>
+                                        <Form.Control
+                                            type={'email'}
+                                            placeholder={'Ingresa tu email'}
+                                            onChange={props.onChangeFormValue}
+                                            name={'email'}
+                                            className={props.isValid.email ? '' :'form-error-control'}
+                                        />
+                                    </Form.Group>
+                                </div>
+                                :
+                                <DreyfusSkillScale
+                                    onChange={props.onChange}
+                                    scale={dreyfusQuestions[actualQuestion].scale}
+                                    title={dreyfusQuestions[actualQuestion].title}
+                                    name={dreyfusQuestions[actualQuestion].name}
+                                    index={props.actualQuestion}/>
+
+                            }
+
+                            <div className={'mt-5 space-btn'}>
+                                <button className={'btn my-btn-primary form--btn'}>
+                                    {
+                                        actualQuestion < dreyfusQuestions.length - 1 ?
+                                            'Siguiente habilidad' :
+                                            'Enviar'
+                                    }
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </Col>
                 <Col sm={6}>
-                    <div className={'sliders-container'}>
-                        { actualQuestion < 0 ?
-                            <div className={'basic-data__form-group'}>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Nombre Completo</Form.Label>
-                                    <Form.Control
-                                        type={'text'}
-                                        placeholder={'Ingresa tu nombre completo'}
-                                        onChange={props.onChangeFormValue}
-                                        name={'name'}
-                                        className={props.isValid.name ? '' : 'form-error-control'}
-                                    />
-                                </Form.Group>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Email</Form.Label>
-                                    <Form.Control
-                                        type={'email'}
-                                        placeholder={'Ingresa tu email'}
-                                        onChange={props.onChangeFormValue}
-                                        name={'email'}
-                                        className={props.isValid.email ? '' :'form-error-control'}
-                                    />
-                                </Form.Group>
-                            </div>
-                            :
-                            <DreyfusSkillScale
-                                onChange={props.onChange}
-                                scale={dreyfusQuestions[actualQuestion].scale}
-                                title={dreyfusQuestions[actualQuestion].title}
-                                name={dreyfusQuestions[actualQuestion].name}
-                                index={props.actualQuestion}/>
 
-                        }
-
-                        <div className={'mt-5 space-btn'}>
-                            <button className={'btn my-btn-primary form--btn'}>
-                                {
-                                    actualQuestion < dreyfusQuestions.length - 1 ?
-                                        'Siguiente habilidad' :
-                                        'Enviar'
-                                }
-                            </button>
-                        </div>
-                    </div>
 
                 </Col>
             </Row>

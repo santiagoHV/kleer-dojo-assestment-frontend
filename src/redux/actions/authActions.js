@@ -13,7 +13,6 @@ export const logInAction = user =>{
     return dispatch => {
         logIn(user)
             .then(logInResponse => {
-                console.log('loginresponse',logInResponse);
                 if(logInResponse.error){
                     toast.error(logInResponse.error,{
                         position: toast.POSITION.BOTTOM_CENTER

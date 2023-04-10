@@ -20,3 +20,7 @@ export const incrementActualQuestion = () => ({
 export const restartActualQuestion = () => ({
     type: 'RESTART_ACTUAL_QUESTION'
 })
+
+export const restartForm = () => ({
+    type: 'RESTART_FORM'
+})

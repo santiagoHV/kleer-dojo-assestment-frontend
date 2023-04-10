@@ -4,7 +4,7 @@ import {
   SEND_FIRST_ASSESSMENT,
   SET_ACTUAL_FIRST_ASSESSMENT,
   GET_FIRST_ASSESSMENT,
-  GET_ALL_FIRST_ASSESSMENTS, SET_ERROR
+  GET_ALL_FIRST_ASSESSMENTS, SET_ERROR, TOGGLE_LOADER
 } from "./types";
 import {toast} from "react-toastify";
 import {useHistory} from "react-router-dom";
@@ -35,18 +35,35 @@ export const sendFirstAssessmentAction = payload => {
     sendFirstAssessment(payload)
       .then(response => {
         console.log(response)
-        if(typeof(response.data.email) === Array){
-          toast.error(response.data.email[0],{
-            position: toast.POSITION.BOTTOM_CENTER
+        if(typeof(response.data.email) === 'string'){
+          dispatch({
+            type: 'REGISTER_SUCCESS'
+          })
+          console.log('exito enviado a' + response.data.email)
+        }else{
+          toast.error(response.data.email[0], {
+            position: toast.POSITION.BOTTOM_CENTER,
+            duration: 4000,
+          })
+          dispatch({
+            type: TOGGLE_LOADER
+          })
+          dispatch({
+            type: 'RESTART_ACTUAL_QUESTION'
           })
         }
+
       }).catch(error => {
+        console.log(error)
         toast.error(error.response.data.error,{
           position: toast.POSITION.BOTTOM_CENTER
         })
         dispatch({
           type: SET_ERROR,
           payload: error.response.data.error
+        })
+        dispatch({
+          type: 'RESTART_ACTUAL_QUESTION'
         })
       })
 
