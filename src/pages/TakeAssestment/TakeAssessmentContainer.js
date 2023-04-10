@@ -7,6 +7,8 @@ import validators from "../../models/validators";
 import {useDispatch, useSelector} from "react-redux";
 import {sendFirstAssessmentAction} from "../../redux/actions/firstAssessmentActions";
 import dreyfusQuestions from "../../assets/static_data/questions.json"
+import {incrementActualQuestion, setEmail, setName, setSkill} from "../../redux/actions/takeAssessmentActions";
+import {toast} from "react-toastify";
 
 
 const TakeAssessmentContainer = (props) => {
@@ -14,8 +16,14 @@ const TakeAssessmentContainer = (props) => {
 
     const dispatch = useDispatch()
     const error = useSelector(state => state.ui.error)
+    const loading = useSelector(state => state.ui.loading)
+
+    const skills = useSelector(state => state.takeAssessment.skills)
+    const name = useSelector(state => state.takeAssessment.name)
+    const email = useSelector(state => state.takeAssessment.email)
+    const actualQuestion = useSelector(state => state.takeAssessment.actualQuestion)
+
     //////////// independent
-    const [actualQuestion, setActualQuestion] = useState(0)
     const [basicData, setBasicData] = useState({
         name: '',
         email: ''
@@ -37,12 +45,12 @@ const TakeAssessmentContainer = (props) => {
 
 
 
-    const handleChangeSlider = (value, index) => {
+    const handleChangeSlider = (value, name, index) => {
         const temporalCategories = competences
         temporalCategories[index].value = value
         setCompetences(temporalCategories)
 
-        console.log(competences)
+        dispatch(setSkill({name: name, value: value}))
     }
 
     const handleChangeFormValue = (e) => {
@@ -52,8 +60,10 @@ const TakeAssessmentContainer = (props) => {
         })
         if(e.target.type === 'text'){
             setIsValid({...isValid, name: validators.validateText(e.target.value)})
+            dispatch(setName(e.target.value))
         }else if(e.target.type === 'email'){
             setIsValid({...isValid, email: validators.validateEmail(e.target.value)})
+            dispatch(setEmail(e.target.value))
         }
     }
 
@@ -72,36 +82,52 @@ const TakeAssessmentContainer = (props) => {
     }
 
     const sendData = async (e) => {
-        try{
-            const response = await fetch(url, {
-                method: 'POST',
-                headers:{
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(getSendObject())
-            })
+        // try{
+        //     const response = await fetch(url, {
+        //         method: 'POST',
+        //         headers:{
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(getSendObject())
+        //     })
+        //
+        //     setPetitionStatus({loading: false, error: null})
+        //
+        //     await props.history.push(`/results-assessment/${basicData.email}`)
+        //
+        // }catch (error){
+        //     setPetitionStatus({loading: false, error: error})
+        // }
 
-            setPetitionStatus({loading: false, error: null})
-
-            await props.history.push(`/results-assessment/${basicData.email}`)
-
-        }catch (error){
-            setPetitionStatus({loading: false, error: error})
-        }
-
-        //dispatch(sendFirstAssessmentAction(getSendObject()))
+        dispatch(sendFirstAssessmentAction({
+            ...skills,
+            name: name,
+            email: email
+        }))
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if(actualQuestion < dreyfusQuestions.length - 1){
-            setActualQuestion(actualQuestion + 1)
-        }else{
+        console.log(actualQuestion)
+        if(actualQuestion < (dreyfusQuestions.length - 1) && actualQuestion >= 0){
+            console.log('entra por aca')
+            dispatch(incrementActualQuestion())
+            console.log(actualQuestion)
+
+        }else if(actualQuestion < 0){
             if(isValid.name && isValid.email){
-                setPetitionStatus({loading: true, error: null})
-                await sendData()
+                dispatch(incrementActualQuestion())
+            }else{
+                toast('Complete los campos correctamente por favor',
+                    {
+                        type: 'info',
+                        position: toast.POSITION.BOTTOM_RIGHT,
+                    })
             }
+        }else if(actualQuestion >= (dreyfusQuestions.length - 1)){
+            setPetitionStatus({loading: true, error: null})
+            sendData()
         }
 
     }

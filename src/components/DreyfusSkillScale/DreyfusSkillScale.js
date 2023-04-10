@@ -20,7 +20,7 @@ const DreyfusSkillScale = (props) => {
 
     return (
         <div className={'DreyfusScale'}>
-            <h3 className={'mb-5'}>{props.name}</h3>
+            <h3 className={'mb-5'}>{props.title}</h3>
 
             {/*<Slider
                 getAriaLabel={() => 'Temperature'}
@@ -42,7 +42,7 @@ const DreyfusSkillScale = (props) => {
                 step={1}
                 min={1}
                 max={5}
-                onChange={(e, data) => {props.onChange(data, props.index)}}
+                onChange={(e, data) => {props.onChange(data, props.name, props.index)}}
             />
         </div>
     )

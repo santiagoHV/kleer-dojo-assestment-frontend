@@ -26,7 +26,6 @@ const authReducer = (state = initialState, action) => {
                 token: action.payload.token
             }
         case LOG_IN_FAIL:
-            console.log('action.payload')
             return {
                 ...state,
                 isLoggedIn: false,

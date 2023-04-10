@@ -5,8 +5,11 @@ import './FormAssessment.css'
 import levels from "../../models/levels";
 import dreyfusQuestions from "../../assets/static_data/questions.json"
 import DreyfusSkillScale from "../DreyfusSkillScale/DreyfusSkillScale";
+import {useSelector} from "react-redux";
 
 const FormAssessment = (props) => {
+
+    const actualQuestion = useSelector(state => state.takeAssessment.actualQuestion)
 
     const sliders = () => {
         return (
@@ -64,18 +67,43 @@ const FormAssessment = (props) => {
                 </Col>
                 <Col sm={6}>
                     <div className={'sliders-container'}>
-                        {
-                            //sliders()
+                        { actualQuestion < 0 ?
+                            <div className={'basic-data__form-group'}>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Nombre Completo</Form.Label>
+                                    <Form.Control
+                                        type={'text'}
+                                        placeholder={'Ingresa tu nombre completo'}
+                                        onChange={props.onChangeFormValue}
+                                        name={'name'}
+                                        className={props.isValid.name ? '' : 'form-error-control'}
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Email</Form.Label>
+                                    <Form.Control
+                                        type={'email'}
+                                        placeholder={'Ingresa tu email'}
+                                        onChange={props.onChangeFormValue}
+                                        name={'email'}
+                                        className={props.isValid.email ? '' :'form-error-control'}
+                                    />
+                                </Form.Group>
+                            </div>
+                            :
+                            <DreyfusSkillScale
+                                onChange={props.onChange}
+                                scale={dreyfusQuestions[actualQuestion].scale}
+                                title={dreyfusQuestions[actualQuestion].title}
+                                name={dreyfusQuestions[actualQuestion].name}
+                                index={props.actualQuestion}/>
+
                         }
-                        <DreyfusSkillScale
-                            onChange={props.onChange}
-                            scale={dreyfusQuestions[props.actualQuestion].scale}
-                            name={dreyfusQuestions[props.actualQuestion].title}
-                            index={props.actualQuestion}/>
+
                         <div className={'mt-5 space-btn'}>
                             <button className={'btn my-btn-primary form--btn'}>
                                 {
-                                    props.actualQuestion < dreyfusQuestions.length - 1 ?
+                                    actualQuestion < dreyfusQuestions.length - 1 ?
                                         'Siguiente habilidad' :
                                         'Enviar'
                                 }

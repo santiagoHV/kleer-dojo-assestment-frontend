@@ -31,6 +31,7 @@ export const deleteFirstAssessment = async (email, token) => {
 };
 
 export const sendFirstAssessment = async (data) => {
+    console.log(data)
     const response = await Axios.post(
         '/single-assessment/first-assessment-new',
         data,

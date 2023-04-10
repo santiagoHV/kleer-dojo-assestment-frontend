@@ -31,11 +31,10 @@ export const getAllFirstAssessmentsAction = (payload) => {
 }
 
 export const sendFirstAssessmentAction = payload => {
-  console.log("payload")
-  console.log(payload)
   return dispatch => {
     sendFirstAssessment(payload)
       .then(response => {
+        console.log(response)
         if(typeof(response.data.email) === Array){
           toast.error(response.data.email[0],{
             position: toast.POSITION.BOTTOM_CENTER

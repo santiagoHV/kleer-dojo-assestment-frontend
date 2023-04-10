@@ -1,6 +1,7 @@
 [
   {
     "title": "Lean-Agile",
+    "name": "lean_agile",
     "scale": [
       "Tengo conocimientos basado en lecturas o libros. Asistí a un taller de Scrum o Kanban. Me certifiqué como CSM.",
       "Fui parte de un equipo ágil. He trabajado bajo un framework ágil por lo menos un año. Facilité esporádicamente sesiones de equipos ágiles.",
@@ -11,6 +12,7 @@
   },
   {
     "title": "Entrenador",
+    "name": "training",
     "scale": [
       "Tengo conocimientos sólidos en mi especialidad. He enseñado de manera informal. No tengo conocimientos de técnicas de enseñanza.",
       "He dictado alguna clase o seminario. He sido tutor o asistente de training. Conozco técnicas como: PBL, POL, Método de Caso.",
@@ -21,6 +23,7 @@
   },
   {
     "title": "Mentor",
+    "name": "mentoring",
     "scale": [
       "Tengo conocimientos sólidos en mi especialidad. Sé distinguir qué es y no es mentorear. Fui mentoreado. Hicer shadow a un mentor. Conozco técnicas de mentoring.",
       "He hecho mentoring alguna vez. He aplicado alguna técnica de mentoring. Soy capaz de identificar patrones basados en la observación.",
@@ -31,6 +34,7 @@
   },
   {
     "title": "Facilitador",
+    "name": "facilitation",
     "scale": [
       "Conozco dinámicas simples (icebreakers). Puedo ser guardían del tiempo o guardían del propósito en una reunión.",
       "Puedo facilitar las reuniones usuales de mis equipos. Mi capacidad de facilitación es reducida (ej: 10px). Puedo sostener un diseño de facilitación previamente elaborado.",
@@ -41,6 +45,7 @@
   },
   {
     "title": "Coach",
+    "name": "coaching",
     "scale": [
       "Hice una formación pero he tenido poca práctica.",
       "Estoy muy pendiente de la estructura del coaching. Tengo expectativas propias de la sesión. Escucho para validar lo que sé. Tengo menos de 100 horas de coaching.",
@@ -51,6 +56,7 @@
   },
   {
     "title": "Maestría Técnica",
+    "name": "m_technique",
     "scale": [
       "Tengo conocimientos teóricos sobre los principios/prácticas de: XP, Agile Testing, DevOps, Software Craftsmanship y Clean Code. Conozco sobre las actividades del ciclo de vida de desarrollo de software. Tengo conocimiento teórico sobre arquitectura e infraestructura moderna.",
       "He participado de equipos que realizan algunos principios y prácticas. Entiendo los beneficios de los principios/prácticas y cómo aportan al negocio. He recibido mentoría sobre el tema o llevado algún workshop.",
@@ -61,6 +67,7 @@
   },
   {
     "title": "Maestría Transformacional",
+    "name": "m_transformation",
     "scale": [
       "He leído sobre teoría de sistemas y teoría de cambios. Conozco conceptos como Cynefin, Teoría U, Spiral Dynamics, etc. Tengo la capacidad de coordinar.",
       "He trabajado con algún framework de transformación. Tengo la capacidad de escuchar activamente. He trabajado con algún framework de liderazgo.",
@@ -71,6 +78,7 @@
   },
   {
     "title": "Maestría de Negocios",
+    "name": "m_deal",
     "scale": [
       "Conozco aspectos básicos de desarrollo de negocios y productos.",
       "He participado de un equipo de producto. Conozco sobre UX, Research, Customer development. Entiendo información estadística para tomar decisiones.",
