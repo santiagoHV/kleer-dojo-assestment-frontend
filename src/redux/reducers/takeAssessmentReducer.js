@@ -39,6 +39,11 @@ const takeAssessmentReducer = (state = initialState, action) => {
                 ...state,
                 actualQuestion: state.actualQuestion + 1
             }
+        case 'RESTART_ACTUAL_QUESTION':
+            return {
+                ...state,
+                actualQuestion: -1
+            }
         default:
             return {...state}
 

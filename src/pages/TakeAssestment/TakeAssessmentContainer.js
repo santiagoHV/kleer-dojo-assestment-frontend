@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {data} from "../../assets/data";
 import {URLS} from "../../assets/urls";
 import TakeAssessment from "./TakeAssessment";
@@ -7,7 +7,13 @@ import validators from "../../models/validators";
 import {useDispatch, useSelector} from "react-redux";
 import {sendFirstAssessmentAction} from "../../redux/actions/firstAssessmentActions";
 import dreyfusQuestions from "../../assets/static_data/questions.json"
-import {incrementActualQuestion, setEmail, setName, setSkill} from "../../redux/actions/takeAssessmentActions";
+import {
+    incrementActualQuestion,
+    restartActualQuestion,
+    setEmail,
+    setName,
+    setSkill
+} from "../../redux/actions/takeAssessmentActions";
 import {toast} from "react-toastify";
 
 
@@ -22,6 +28,10 @@ const TakeAssessmentContainer = (props) => {
     const name = useSelector(state => state.takeAssessment.name)
     const email = useSelector(state => state.takeAssessment.email)
     const actualQuestion = useSelector(state => state.takeAssessment.actualQuestion)
+
+    useEffect(() => {
+        dispatch(restartActualQuestion())
+    }, [])
 
     //////////// independent
     const [basicData, setBasicData] = useState({
