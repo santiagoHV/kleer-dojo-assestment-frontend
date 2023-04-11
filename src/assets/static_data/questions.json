@@ -2,6 +2,7 @@
   {
     "title": "Lean-Agile",
     "name": "lean_agile",
+    "description": "La parte superior del framework de competencias es a su vez la base del mismo y hace referencia al conocimiento práctico del mindset ágil y lean.\nLas siguientes afirmaciones quizás te ayuden a ubicarte en tu nivel de conocimiento práctico en Agilidad y Lean.\n",
     "scale": [
       "Tengo conocimientos basado en lecturas o libros. Asistí a un taller de Scrum o Kanban. Me certifiqué como CSM.",
       "Fui parte de un equipo ágil. He trabajado bajo un framework ágil por lo menos un año. Facilité esporádicamente sesiones de equipos ágiles.",
@@ -11,8 +12,9 @@
     ]
   },
   {
-    "title": "Entrenador",
+    "title": "Entrenamiento",
     "name": "training",
+    "description": "Competencia donde el agile coach desarrolla sus habilidades para diseñar espacios de aprendizaje participativos sobre técnicas, métodos y herramientas ágiles específicas al contexto de la organización, equipo o personas qué acompaña.\nLas siguientes afirmaciones quizás te ayuden a ubicar tu nivel de expertise en entrenamiento ágil.\n",
     "scale": [
       "Tengo conocimientos sólidos en mi especialidad. He enseñado de manera informal. No tengo conocimientos de técnicas de enseñanza.",
       "He dictado alguna clase o seminario. He sido tutor o asistente de training. Conozco técnicas como: PBL, POL, Método de Caso.",
@@ -24,6 +26,7 @@
   {
     "title": "Mentor",
     "name": "mentoring",
+    "description": "El agile coach como mentor inspira y ayuda a los demás desde la práctica. Es más efectivo enseñar técnicas o habilidades desde “la trinchera”, acompañando el proceso de otros coaches, basado en el feedback constante.\nLas siguientes afirmaciones quizás te ayuden a ubicar tu nivel de expertise como mentor.\n",
     "scale": [
       "Tengo conocimientos sólidos en mi especialidad. Sé distinguir qué es y no es mentorear. Fui mentoreado. Hicer shadow a un mentor. Conozco técnicas de mentoring.",
       "He hecho mentoring alguna vez. He aplicado alguna técnica de mentoring. Soy capaz de identificar patrones basados en la observación.",
@@ -35,6 +38,7 @@
   {
     "title": "Facilitador",
     "name": "facilitation",
+    "description": "",
     "scale": [
       "Conozco dinámicas simples (icebreakers). Puedo ser guardían del tiempo o guardían del propósito en una reunión.",
       "Puedo facilitar las reuniones usuales de mis equipos. Mi capacidad de facilitación es reducida (ej: 10px). Puedo sostener un diseño de facilitación previamente elaborado.",
@@ -44,8 +48,9 @@
     ]
   },
   {
-    "title": "Coach",
+    "title": "Coaching Profesional",
     "name": "coaching",
+    "description": "Competencia donde el Agile Coach ayuda a las personas a identificar sus problemas y a buscar sus propias soluciones, por medio del coaching profe. Este enfoque les empodera para ser más efectivos y les da la responsabilidad.\nLas siguientes afirmaciones quizás te ayuden a ubicar tu nivel de expertise como Coach profesional.\n",
     "scale": [
       "Hice una formación pero he tenido poca práctica.",
       "Estoy muy pendiente de la estructura del coaching. Tengo expectativas propias de la sesión. Escucho para validar lo que sé. Tengo menos de 100 horas de coaching.",
@@ -57,6 +62,7 @@
   {
     "title": "Maestría Técnica",
     "name": "m_technique",
+    "description": "Competencia que hace referencia a las prácticas propias de la ingeniería qué promueven la agilidad como Test Driven development, clean code, refactoring, continuous integration, etc.\nLas siguientes afirmaciones quizás te ayuden a ubicar tu nivel de expertise en la maestría técnica.\n",
     "scale": [
       "Tengo conocimientos teóricos sobre los principios/prácticas de: XP, Agile Testing, DevOps, Software Craftsmanship y Clean Code. Conozco sobre las actividades del ciclo de vida de desarrollo de software. Tengo conocimiento teórico sobre arquitectura e infraestructura moderna.",
       "He participado de equipos que realizan algunos principios y prácticas. Entiendo los beneficios de los principios/prácticas y cómo aportan al negocio. He recibido mentoría sobre el tema o llevado algún workshop.",
@@ -68,6 +74,7 @@
   {
     "title": "Maestría Transformacional",
     "name": "m_transformation",
+    "description": "La última competencia del modelo qué hace referencia a las habilidades del Agile coach para ser un agente de cambio en distintos niveles organizacionales, donde nos encontramos conocimiento en marcos de cambio como ADKAR, Cynefin y gestión del cambio como lean change management, por poner solo un par de ejemplos.\nLas siguientes afirmaciones quizás te ayuden a ubicar tu nivel de expertise en la maestría de transformación.\n",
     "scale": [
       "He leído sobre teoría de sistemas y teoría de cambios. Conozco conceptos como Cynefin, Teoría U, Spiral Dynamics, etc. Tengo la capacidad de coordinar.",
       "He trabajado con algún framework de transformación. Tengo la capacidad de escuchar activamente. He trabajado con algún framework de liderazgo.",
@@ -79,6 +86,7 @@
   {
     "title": "Maestría de Negocios",
     "name": "m_deal",
+    "description": "Competencia en la cual el Agile Coach ayuda a la organización a estar centrada en el cliente y a la innovación basada en la entrega de valor, con un alto expertise en Product Management, Product Discovery y métodos como Design Thinking.\nLas siguientes afirmaciones quizás te ayuden a ubicar tu nivel de expertise en la maestría de negocio.\n",
     "scale": [
       "Conozco aspectos básicos de desarrollo de negocios y productos.",
       "He participado de un equipo de producto. Conozco sobre UX, Research, Customer development. Entiendo información estadística para tomar decisiones.",

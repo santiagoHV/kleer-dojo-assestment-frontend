@@ -73,6 +73,7 @@ const FormAssessment = (props) => {
                                     scale={dreyfusQuestions[actualQuestion].scale}
                                     title={dreyfusQuestions[actualQuestion].title}
                                     name={dreyfusQuestions[actualQuestion].name}
+                                    description={dreyfusQuestions[actualQuestion].description}
                                     index={props.actualQuestion}/>
 
                             }

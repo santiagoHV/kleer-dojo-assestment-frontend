@@ -18,9 +18,9 @@ const PrettoSlider = withStyles({
         },
     },
     active: {},
-    valueLabel: {
-        left: 'calc(-50% + 4px)',
-    },
+    // valueLabel: {
+    //     left: 'calc(-50% + 4px)',
+    // },
     track: {
         height: 8,
         borderRadius: 4,

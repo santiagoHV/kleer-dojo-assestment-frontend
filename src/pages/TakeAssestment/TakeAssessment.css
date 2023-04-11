@@ -35,6 +35,14 @@
     max-width: 150px;
 }
 
+.form-container-info{
+    margin: 20% 40px auto 40px;
+    padding: 30px;
+    border-radius: 30px;
+    background-color: rgba(69, 121, 178, 0.4);
+    font-family: 'Raleway', sans-serif !important;
+}
+
 @media screen and (max-width: 900px){
     .form-container{
         padding: 0;

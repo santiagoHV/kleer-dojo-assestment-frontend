@@ -1,12 +1,23 @@
 .DreyfusScale{
-    height: 500px;
+    height: 700px;
     margin-top: 30px ;
+}
+
+.DreyfusScale > .slider{
+    height: 550px;
+}
+
+.DreyfusScale > .description{
+    font-family: 'Raleway', sans-serif !important;
 }
 
 .MuiSlider-markLabel{
     margin-left: 20px;
     white-space: normal !important;
-    width: 30vw
+    width: 30vw;
+    font-family: 'Raleway', sans-serif !important;
+    font-size: 1rem !important;
+
 }
 
 .MuiSlider-root.MuiSlider-vertical{
@@ -17,3 +28,4 @@
 .MuiSlider-vertical .MuiSlider-thumb{
     margin-left: -11px !important;
 }
+

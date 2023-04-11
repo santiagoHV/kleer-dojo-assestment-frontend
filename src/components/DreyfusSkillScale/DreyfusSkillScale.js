@@ -20,8 +20,10 @@ const DreyfusSkillScale = (props) => {
 
     return (
         <div className={'DreyfusScale'}>
-            <h3 className={'mb-5'}>{props.title}</h3>
-
+            <h3 className={'mb-3'}>{props.title}</h3>
+            <div className={'mb-5 description'}>
+                {props.description}
+            </div>
             {/*<Slider
                 getAriaLabel={() => 'Temperature'}
                 orientation="vertical"
@@ -32,18 +34,21 @@ const DreyfusSkillScale = (props) => {
                 min={1}
                 max={5}
             />*/}
-            <PrettoSlider
-                orientation="vertical"
-                getAriaValueText={text}
-                aria-label="Custom marks"
-                valueLabelDisplay="auto"
-                marks={marks}
-                defaultValue={1}
-                step={1}
-                min={1}
-                max={5}
-                onChange={(e, data) => {props.onChange(data, props.name, props.index)}}
-            />
+            <div className={'slider'}>
+                <PrettoSlider
+                    orientation="vertical"
+                    getAriaValueText={text}
+                    aria-label="Custom marks"
+                    // valueLabelDisplay="auto"
+                    marks={marks}
+                    defaultValue={1}
+                    step={1}
+                    min={1}
+                    max={5}
+                    onChange={(e, data) => {props.onChange(data, props.name, props.index)}}
+                />
+            </div>
+
         </div>
     )
 }
