@@ -35,6 +35,15 @@ const FormAssessment = (props) => {
         )
     }
 
+    const textButton = () => {
+        if(actualQuestion < dreyfusQuestions.length - 1 && actualQuestion >= 0){
+            return 'Siguiente habilidad'
+        }else if(actualQuestion < 0){
+            return 'Iniciar'
+        }else{
+            return 'Enviar'
+        }
+    }
     return(
         <Form onSubmit={props.onSubmit} className={'form'}>
             <Row>
@@ -80,11 +89,7 @@ const FormAssessment = (props) => {
 
                             <div className={'mt-3 space-btn'}>
                                 <button className={'btn my-btn-primary form--btn'}>
-                                    {
-                                        actualQuestion < dreyfusQuestions.length - 1 ?
-                                            'Siguiente habilidad' :
-                                            'Enviar'
-                                    }
+                                    {textButton() }
                                 </button>
                             </div>
                         </div>
