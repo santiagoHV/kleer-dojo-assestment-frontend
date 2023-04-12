@@ -9,7 +9,7 @@ import {sendFirstAssessmentAction} from "../../redux/actions/firstAssessmentActi
 import dreyfusQuestions from "../../assets/static_data/questions.json"
 import {
     incrementActualQuestion,
-    restartActualQuestion,
+    restartActualQuestion, restartForm,
     setEmail,
     setName,
     setSkill
@@ -36,6 +36,7 @@ const TakeAssessmentContainer = (props) => {
 
     useEffect(() => {
         dispatch(restartActualQuestion())
+        dispatch(restartForm())
     }, [])
 
     //////////// independent

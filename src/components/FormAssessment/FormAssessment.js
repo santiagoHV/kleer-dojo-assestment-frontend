@@ -78,7 +78,7 @@ const FormAssessment = (props) => {
 
                             }
 
-                            <div className={'mt-5 space-btn'}>
+                            <div className={'mt-3 space-btn'}>
                                 <button className={'btn my-btn-primary form--btn'}>
                                     {
                                         actualQuestion < dreyfusQuestions.length - 1 ?

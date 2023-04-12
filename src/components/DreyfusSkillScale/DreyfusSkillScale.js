@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Slider} from "@material-ui/core";
 import PrettoSlider from "../SliderCustom/SliderCustom";
 import './DreyfusSkillScale.css'
@@ -17,6 +17,7 @@ const DreyfusSkillScale = (props) => {
             label: e
         }
     })
+
 
     return (
         <div className={'DreyfusScale'}>
@@ -41,7 +42,6 @@ const DreyfusSkillScale = (props) => {
                     aria-label="Custom marks"
                     // valueLabelDisplay="auto"
                     marks={marks}
-                    defaultValue={1}
                     step={1}
                     min={1}
                     max={5}

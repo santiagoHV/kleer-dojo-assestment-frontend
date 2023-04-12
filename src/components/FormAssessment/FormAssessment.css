@@ -72,8 +72,12 @@
     }
     .sliders-container{
         width: 100%;
+        height: auto;
     }
     .center-container {
         padding: 0 35px 0 35px;
+    }
+    .form__basic-data{
+        padding: 20px 0;
     }
 }

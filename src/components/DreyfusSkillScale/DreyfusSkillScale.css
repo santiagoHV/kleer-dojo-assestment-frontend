@@ -17,7 +17,6 @@
     width: 30vw;
     font-family: 'Raleway', sans-serif !important;
     font-size: 1rem !important;
-
 }
 
 .MuiSlider-root.MuiSlider-vertical{
@@ -29,3 +28,16 @@
     margin-left: -11px !important;
 }
 
+@media screen and (max-width: 900px){
+    .MuiSlider-markLabel{
+        width: 70vw;
+    }
+    .DreyfusScale{
+        height: auto;
+        margin-top: 30px ;
+    }
+
+    .DreyfusScale > .slider{
+        height: 700px;
+    }
+}
