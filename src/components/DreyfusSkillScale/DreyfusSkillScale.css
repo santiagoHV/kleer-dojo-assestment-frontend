@@ -4,11 +4,13 @@
 }
 
 .DreyfusScale > .slider{
-    height: 550px;
+    height: 600px;
 }
 
 .DreyfusScale > .description{
     font-family: 'Raleway', sans-serif !important;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 .MuiSlider-markLabel{
@@ -38,6 +40,7 @@
     }
 
     .DreyfusScale > .slider{
-        height: 700px;
+        height: 950px;
+        margin-left: -20px;
     }
 }
