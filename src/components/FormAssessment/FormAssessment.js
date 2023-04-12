@@ -10,6 +10,7 @@ import {useSelector} from "react-redux";
 const FormAssessment = (props) => {
 
     const actualQuestion = useSelector(state => state.takeAssessment.actualQuestion)
+    const skills = useSelector(state => state.takeAssessment.skills)
 
     const sliders = () => {
         return (
@@ -83,6 +84,7 @@ const FormAssessment = (props) => {
                                     title={dreyfusQuestions[actualQuestion].title}
                                     name={dreyfusQuestions[actualQuestion].name}
                                     description={dreyfusQuestions[actualQuestion].description}
+                                    value={skills[dreyfusQuestions[actualQuestion].name]}
                                     index={props.actualQuestion}/>
 
                             }

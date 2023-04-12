@@ -12,8 +12,14 @@ const AssessmentResult = (props) => {
     const data = useSelector(state => state.firstAssessment.assessment)
     const token = useSelector(state => state.auth.token);
 
+    console.log(data)
     const [email, setEmail] = useState(props.match.params.email)
 
+    const processData = () => data.map(e =>{
+        return {
+            data: data
+        }
+    })
 
     useEffect(() => {
         dispatch(toggleLoader(token))
@@ -37,7 +43,6 @@ const AssessmentResult = (props) => {
     }
 
     if (!loading) {
-        console.log('data',data)
         return (
             <section>
                 <Results

@@ -6,6 +6,7 @@ import {Container, ProgressBar} from "react-bootstrap";
 import ReactToPdf from "react-to-pdf";
 import PrintableResults from "../PrintableResults/PrintableResults";
 import levels from '../../models/levels'
+import dreyfusQuestions from "../../assets/static_data/questions.json"
 
 const getWindowDimensions = () => {
     const { availWidth: width, availHeight: height } = window.screen;
@@ -16,6 +17,8 @@ const getWindowDimensions = () => {
         height
     };
 }
+
+const getName = (text) => dreyfusQuestions.find(e => e.name == text).title
 
 
 const Results = (props) => {
@@ -37,9 +40,12 @@ const Results = (props) => {
             date = props.results[i]
         }else{
             results.push(props.results[i])
-            categories.push(i)
+            const name = getName(i)
+            categories.push(name)
         }
     }
+    console.log(categories)
+
 
 
     const progressBars = () => {
@@ -50,7 +56,8 @@ const Results = (props) => {
                     return (
                         <div className={'competence-container'}>
                             <h3 className={'competence-container__title'}>
-                                {categories[index].replace(/^\w/, (c) => c.toUpperCase())}
+                                {/*{categories[index].replace(/^\w/, (c) => c.toUpperCase())}*/}
+                                {categories[index]}
                             </h3>
                             <p className={'competence-container__level'}>
                                 {levels.getLevel(item)}
