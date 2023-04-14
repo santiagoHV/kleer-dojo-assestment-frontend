@@ -12,7 +12,7 @@
     ]
   },
   {
-    "title": "Entrenamiento",
+    "title": "Training",
     "name": "training",
     "description": "Competencia donde el agile coach desarrolla sus habilidades para diseñar espacios de aprendizaje participativos sobre técnicas, métodos y herramientas ágiles específicas al contexto de la organización, equipo o personas qué acompaña.\nLas siguientes afirmaciones quizás te ayuden a ubicar tu nivel de expertise en entrenamiento ágil.\n",
     "scale": [
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "title": "Mentor",
+    "title": "Mentoring",
     "name": "mentoring",
     "description": "El agile coach como mentor inspira y ayuda a los demás desde la práctica. Es más efectivo enseñar técnicas o habilidades desde “la trinchera”, acompañando el proceso de otros coaches, basado en el feedback constante.\nLas siguientes afirmaciones quizás te ayuden a ubicar tu nivel de expertise como mentor.\n",
     "scale": [
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "title": "Facilitador",
+    "title": "Facilitación",
     "name": "facilitation",
     "description": "",
     "scale": [
