@@ -23,7 +23,7 @@ const getName = (text) => dreyfusQuestions.find(e => e.name == text).title
 
 const Results = (props) => {
 
-    const [printVisible, setPrintVisible] = useState(false)
+    const [printVisible, setPrintVisible] = useState(true)
     const isMobile = getWindowDimensions().width <= 700
     let results = [], categories = []
     let name, date, email
