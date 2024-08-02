@@ -16,7 +16,7 @@
 .MuiSlider-markLabel{
     margin-left: 20px;
     white-space: normal !important;
-    width: 30vw;
+    width: 40vw;
     font-family: 'Raleway', sans-serif !important;
     font-size: 1rem !important;
 }
@@ -42,5 +42,6 @@
     .DreyfusScale > .slider{
         height: 950px;
         margin-left: -20px;
+        margin-top: 100px;
     }
 }

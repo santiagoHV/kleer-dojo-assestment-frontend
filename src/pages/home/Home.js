@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
 import {Col, Container, Image, Row} from "react-bootstrap";
 import './Home.css'
-import SELLO from '../../assets/img/Agile Coach Practitioner.png'
+import SELLO from '../../assets/img/certified-agile-coach.png'
 import WOMAN from '../../assets/img/assessment.png'
 import {useDispatch} from "react-redux";
 import {toggleLoader} from "../../redux/actions/uiActions";

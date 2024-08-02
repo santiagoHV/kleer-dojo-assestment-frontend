@@ -11,7 +11,7 @@ const TakeAssessment = (props) => {
                 <Row className={'form-container-row'}>
                     <Col
                         sm={{offset: 0, span: 12}}
-                        md={{offset: 1, span: 6}}
+                        md={{offset: 3, span: 6}}
                         className={'p-0'}
                     >
                         <FormAssessment
@@ -24,16 +24,6 @@ const TakeAssessment = (props) => {
                             isValid={props.isValid}
                             actualQuestion={props.actualQuestion}
                         />
-                    </Col>
-                    <Col md={{offset: 1, span: 3}} >
-                        <div className={'img-container'}>
-                            <img
-                                src={GIRL}
-                                alt={'Chica señalando'}
-                                className={'take-assessment--img'}
-                            />
-                        </div>
-
                     </Col>
                 </Row>
 

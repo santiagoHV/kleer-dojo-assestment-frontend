@@ -1,7 +1,7 @@
 import React from "react";
 import './PrintableResults.css'
 import RadarGraphic from "../RadarGraphic/RadarGraphic";
-import Logo from '../../assets/imgold/LOGO magenta.png'
+import Logo from '../../assets/img/CAP.png'
 
 const PrintableResults = (props) => {
 
